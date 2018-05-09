@@ -1,0 +1,28 @@
+package pl.marta.kopp.registration;
+
+import communication.Response;
+import pl.marta.kopp.view.SystemInterface;
+
+public class RegistrationView {
+    private final RegistrationController registrationController;
+    private final SystemInterface systemInterface;
+
+    public RegistrationView(RegistrationController registrationController, SystemInterface systemInterface) {
+        this.registrationController = registrationController;
+        this.systemInterface = systemInterface;
+    }
+
+    void show(){
+        systemInterface.display("Podaj login: ");
+        String login=systemInterface.read();
+        systemInterface.display("Podaj hasło: ");
+        String password=systemInterface.read();
+
+        Response response=registrationController.createUser(login,password);
+        if(response.getSuccess()){
+            systemInterface.display("Użytkownik "+login+" został pomyślnie zarejestrowany");
+        }else {
+            systemInterface.display("Rejestracja się nie powiodła "+response.getMessage());
+        }
+    }
+}
