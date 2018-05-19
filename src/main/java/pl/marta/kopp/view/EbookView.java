@@ -33,14 +33,17 @@ public class EbookView {
             } else if (option == 3) {
                 System.exit(0);
             } else {
-                systemInterface.display("Niepoprawny wybór. Wybierz ponownie");
-               mainMenu.show();
+                aFailureChoice();
             }
         } catch (NumberFormatException e) {
-            systemInterface.display("Niepoprawny wybór. Wybierz ponownie");
-            mainMenu.show();
+            aFailureChoice();
 
         }
 
+    }
+
+    private void aFailureChoice() {
+        systemInterface.display("Niepoprawny wybór. Wybierz ponownie");
+        mainMenu.show();
     }
 }
