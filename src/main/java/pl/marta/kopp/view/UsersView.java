@@ -12,9 +12,9 @@ public class UsersView {
 
     public void show() {
         systemInterface.display("-------------------------------------------");
-        systemInterface.display("                 Hello                     ");
         systemInterface.display("                                           ");
         systemInterface.display("             Have a nice day!              ");
+        systemInterface.display("                                           ");
         systemInterface.display("-------------------------------------------");
 
     }
