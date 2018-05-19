@@ -1,8 +1,9 @@
 package pl.marta.kopp.registration;
 
-import communication.Response;
-import domain.User;
-import domain.UserStorage;
+import pl.marta.kopp.communication.Response;
+import pl.marta.kopp.connector.DBConnector;
+import pl.marta.kopp.domain.User;
+import pl.marta.kopp.service.UserStorageImpl;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,12 +16,13 @@ public class RegistrationControllerTest {
     private static final String SOME_PASSWORD = "password123";
     private static final String INVALID_PASSWORD = "123";
     private static final String EXISTS_LOGIN = "JohnyDepp";
-    private final UserStorage userStorage = new UserStorage();
-    private final RegistrationController registrationController = new RegistrationController(userStorage);
+    private DBConnector dbConnector;
+    private final UserStorageImpl userStorageImpl = new UserStorageImpl(dbConnector);
+    private final RegistrationController registrationController = new RegistrationController(userStorageImpl);
 
     @Before
     public void setUp() {
-        userStorage.addUser(new User(EXISTS_LOGIN, SOME_PASSWORD));
+        userStorageImpl.addUser(new User(EXISTS_LOGIN, SOME_PASSWORD));
     }
 
     @Test

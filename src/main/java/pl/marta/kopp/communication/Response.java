@@ -1,4 +1,4 @@
-package communication;
+package pl.marta.kopp.communication;
 
 public class Response {
     private Boolean isSuccess;

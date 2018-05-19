@@ -9,8 +9,6 @@ public class CliSystemInterface implements SystemInterface {
         this.scanner = scanner;
     }
 
-    public CliSystemInterface() {
-    }
 
     @Override
     public String read() {

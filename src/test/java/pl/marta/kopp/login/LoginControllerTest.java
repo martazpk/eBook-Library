@@ -1,9 +1,9 @@
 package pl.marta.kopp.login;
 
-import communication.Response;
-import domain.User;
-import domain.UserStorage;
-import login.LoginController;
+import pl.marta.kopp.communication.Response;
+import pl.marta.kopp.connector.DBConnector;
+import pl.marta.kopp.domain.User;
+import pl.marta.kopp.service.UserStorageImpl;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,15 +13,16 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class LoginControllerTest {
-    private final UserStorage userStorage = new UserStorage();
-    private final LoginController loginController = new LoginController(userStorage);
+    private DBConnector dbConnector;
+    private final UserStorageImpl userStorageImpl = new UserStorageImpl(dbConnector);
+    private final LoginController loginController = new LoginController(userStorageImpl);
     private static final String SOME_LOGIN = "spiderman";
     private static final String ANOTHER_LOGIN = "ironman";
     private static final String SOME_PASSWORD = "spider123";
 
     @Before
     public void setUp() {
-        userStorage.addUser(new User(SOME_LOGIN, SOME_PASSWORD));
+        userStorageImpl.addUser(new User(SOME_LOGIN, SOME_PASSWORD));
     }
 
     @Test

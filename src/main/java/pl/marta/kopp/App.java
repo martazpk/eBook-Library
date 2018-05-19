@@ -1,13 +1,23 @@
 package pl.marta.kopp;
 
-/**
- * Hello world!
- *
- */
+import pl.marta.kopp.CreateDataBase.CreateBookStorage;
+import pl.marta.kopp.connector.DBConnector;
+import pl.marta.kopp.service.*;
+import pl.marta.kopp.view.CliSystemInterface;
+import pl.marta.kopp.view.EbookView;
+
+import java.util.Scanner;
+
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
-    }
-}
+        DBConnector conn = DBConnector.getInstance();
+
+        BookStorage bookStorage = new BookStorageImpl(conn);
+        AuthorStorage authorStorage = new AuthorStorageImpl(conn);
+
+        CreateBookStorage.create(bookStorage, authorStorage);
+new EbookView(new CliSystemInterface(new Scanner(System.in)),new UserStorageImpl(conn)).show();
+
+}}

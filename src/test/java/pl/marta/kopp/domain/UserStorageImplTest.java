@@ -1,54 +1,54 @@
 package pl.marta.kopp.domain;
 
-import domain.User;
-import domain.UserAlreadyExistsException;
-import domain.UserStorage;
 import org.junit.Before;
 import org.junit.Test;
+import pl.marta.kopp.connector.DBConnector;
+import pl.marta.kopp.service.UserStorageImpl;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class UserStorageTest {
+public class UserStorageImplTest {
     private static final String SOME_LOGIN = "spiderman";
     private static final String SOME_PASSWORD = "spider123";
     private static final String ANOTHER_LOGIN = "batman";
     private static final String ANOTHER_PASSWORD="bat123";
+    private DBConnector dbConnector;
 
     @Before
     public void setUp() {
-        userStorage.addUser(new User(SOME_LOGIN, SOME_PASSWORD));
+        userStorageImpl.addUser(new User(SOME_LOGIN, SOME_PASSWORD));
     }
 
-    private final UserStorage userStorage = new UserStorage();
+    private final UserStorageImpl userStorageImpl = new UserStorageImpl(dbConnector);
 
     @Test
     public void shouldRecognizeWhenLoginIsNotPresentIsStore() {
-        assertFalse(userStorage.isUserExists(ANOTHER_LOGIN));
+        assertFalse(userStorageImpl.isUserExists(ANOTHER_LOGIN));
     }
 
     @Test
     public void shouldRecognizeWhenUserIsPresetIsStore() {
-        assertTrue(userStorage.isUserExists(SOME_LOGIN));
+        assertTrue(userStorageImpl.isUserExists(SOME_LOGIN));
     }
 
     @Test(expected = UserAlreadyExistsException.class)
     public void shouldThrowExceptionWhenUserWithTheSomeLoginAddTwice() {
-        userStorage.addUser(new User(SOME_LOGIN, SOME_PASSWORD));
+        userStorageImpl.addUser(new User(SOME_LOGIN, SOME_PASSWORD));
     }
 
     @Test
     public void shouldRecognizeWhenThereIsNotUserWithGivenLogin()  {
-        assertFalse(userStorage.isUserExists(ANOTHER_LOGIN,SOME_PASSWORD));
+        assertFalse(userStorageImpl.isUserExists(ANOTHER_LOGIN,SOME_PASSWORD));
     }
 
     @Test
     public void shouldRecognizeWhenThereIsNotUserWithGivenPassword()  {
-        assertFalse(userStorage.isUserExists(SOME_LOGIN,ANOTHER_PASSWORD));
+        assertFalse(userStorageImpl.isUserExists(SOME_LOGIN,ANOTHER_PASSWORD));
     }
 
     @Test
     public void shouldRecognizeWhenUserIsPresentIsStore() {
-        assertTrue(userStorage.isUserExists(SOME_LOGIN,SOME_PASSWORD));
+        assertTrue(userStorageImpl.isUserExists(SOME_LOGIN,SOME_PASSWORD));
     }
 }

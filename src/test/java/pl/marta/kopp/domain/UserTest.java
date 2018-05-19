@@ -1,6 +1,5 @@
 package pl.marta.kopp.domain;
 
-import domain.User;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
