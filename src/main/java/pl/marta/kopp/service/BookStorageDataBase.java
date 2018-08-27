@@ -7,10 +7,10 @@ import pl.marta.kopp.domain.Book;
 import java.util.List;
 
 
-public class BookStorageImpl implements BookStorage {
+public class BookStorageDataBase implements BookStorage {
         private DBConnector dbConnector;
 
-    public BookStorageImpl(DBConnector dbConnector) {
+    public BookStorageDataBase(DBConnector dbConnector) {
         this.dbConnector = dbConnector;
     }
 

@@ -6,10 +6,10 @@ import pl.marta.kopp.connector.DBConnector;
 import pl.marta.kopp.domain.User;
 
 
-public class UserStorageImpl implements UserStorage {
+public class UserStorageDataBase implements UserStorage {
     private DBConnector dbConnector;
 
-    public UserStorageImpl(DBConnector dbConnector) {
+    public UserStorageDataBase(DBConnector dbConnector) {
         this.dbConnector = dbConnector;
     }
 

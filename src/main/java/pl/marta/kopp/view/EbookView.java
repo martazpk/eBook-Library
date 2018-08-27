@@ -1,6 +1,6 @@
 package pl.marta.kopp.view;
 
-import pl.marta.kopp.service.UserStorageImpl;
+import pl.marta.kopp.service.UserStorageDataBase;
 import pl.marta.kopp.login.LoginController;
 import pl.marta.kopp.login.LoginView;
 import pl.marta.kopp.registration.RegistrationController;
@@ -13,11 +13,11 @@ public class EbookView {
     private final RegistrationView registrationView;
 
 
-    public EbookView(SystemInterface systemInterface, UserStorageImpl userStorageImpl) {
+    public EbookView(SystemInterface systemInterface, UserStorageDataBase userStorageDataBase) {
         this.systemInterface = systemInterface;
         mainMenu = new MainMenu();
-        loginView = new LoginView(systemInterface, new LoginController(userStorageImpl));
-        registrationView = new RegistrationView(systemInterface, new RegistrationController(userStorageImpl));
+        loginView = new LoginView(systemInterface, new LoginController(userStorageDataBase));
+        registrationView = new RegistrationView(systemInterface, new RegistrationController(userStorageDataBase));
     }
 
     public void show() {

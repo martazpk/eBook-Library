@@ -6,10 +6,10 @@ import org.hibernate.Session;
 import pl.marta.kopp.domain.Author;
 
 
-public class AuthorStorageImpl implements AuthorStorage {
+public class AuthorStorageDataBase implements AuthorStorage {
     private DBConnector dbConnector;
 
-    public AuthorStorageImpl(DBConnector dbConnector) {
+    public AuthorStorageDataBase(DBConnector dbConnector) {
         this.dbConnector = dbConnector;
     }
 

@@ -14,10 +14,10 @@ public class App
     {
         DBConnector conn = DBConnector.getInstance();
 
-        BookStorage bookStorage = new BookStorageImpl(conn);
-        AuthorStorage authorStorage = new AuthorStorageImpl(conn);
+        BookStorage bookStorage = new BookStorageDataBase(conn);
+        AuthorStorage authorStorage = new AuthorStorageDataBase(conn);
 
         CreateBookStorage.create(bookStorage, authorStorage);
-new EbookView(new CliSystemInterface(new Scanner(System.in)),new UserStorageImpl(conn)).show();
+new EbookView(new CliSystemInterface(new Scanner(System.in)),new UserStorageDataBase(conn)).show();
 
 }}
