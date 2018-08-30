@@ -1,9 +1,12 @@
 package pl.marta.kopp.domain;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 
 @Entity
 @Table
+@Getter
 public class User {
     @Id
     @GeneratedValue
@@ -25,5 +28,7 @@ public class User {
         return this.password.equals(password);
     }
 
-
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

@@ -2,21 +2,21 @@ package pl.marta.kopp.registration;
 
 import pl.marta.kopp.communication.Response;
 import pl.marta.kopp.domain.User;
-import pl.marta.kopp.service.UserStorageDataBase;
+import pl.marta.kopp.service.UserStorageJpa;
 
 public class RegistrationController {
     private static final int MIN_LENGTH = 4;
-    private final UserStorageDataBase userStorageDataBase;
+    private final UserStorageJpa userStorageJpa;
 
-    public RegistrationController(UserStorageDataBase userStorageDataBase) {
-        this.userStorageDataBase = userStorageDataBase;
+    public RegistrationController(UserStorageJpa userStorageJpa) {
+        this.userStorageJpa = userStorageJpa;
     }
 
     public Response createUser(String login, String password) {
         if (login.length() <= MIN_LENGTH) return Response.aFailureResponse("Login is too short");
         if (password.length() <= MIN_LENGTH) return Response.aFailureResponse("Password is to short");
-        if (userStorageDataBase.isUserExists(login)) return Response.aFailureResponse("User already exists");
-        userStorageDataBase.addUser(new User(login, password));
+        if (userStorageJpa.isUserExists(login)) return Response.aFailureResponse("User already exists");
+        userStorageJpa.addUser(new User(login, password));
         return Response.aSuccessfulResponse();
 
     }

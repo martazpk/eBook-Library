@@ -1,11 +1,13 @@
 package pl.marta.kopp.domain;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table
-
+@Getter
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,5 +28,13 @@ public class Book {
     }
 
     public Book() {
+    }
+
+    public void setBorrow(boolean borrow) {
+        this.borrow = borrow;
+    }
+
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
     }
 }
