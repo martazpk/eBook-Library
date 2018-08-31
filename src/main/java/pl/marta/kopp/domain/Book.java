@@ -17,7 +17,7 @@ public class Book {
     private String title;
     private boolean borrow;
     @JoinColumn
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE)
     private List<Author> authors;
 
 

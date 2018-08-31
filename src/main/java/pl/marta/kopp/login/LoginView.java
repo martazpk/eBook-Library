@@ -1,19 +1,19 @@
 package pl.marta.kopp.login;
 
 import pl.marta.kopp.communication.Response;
-import pl.marta.kopp.view.UsersView;
+import pl.marta.kopp.view.UsersMenu;
 import pl.marta.kopp.view.SystemInterface;
 
 public class LoginView {
     private final SystemInterface systemInterface;
     private final LoginController controller;
-    private final UsersView libraryView;
+    private final UsersMenu libraryView;
 
 
     public LoginView(SystemInterface systemInterface, LoginController controller) {
         this.systemInterface = systemInterface;
         this.controller = controller;
-        libraryView=new UsersView(systemInterface);
+        libraryView=new UsersMenu(systemInterface);
     }
 
     public void show(){

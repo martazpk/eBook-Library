@@ -1,7 +1,7 @@
 package pl.marta.kopp.login;
 
 import pl.marta.kopp.communication.Response;
-import pl.marta.kopp.service.UserStorageJpa;
+import pl.marta.kopp.persistence.UserStorageJpa;
 
 public class LoginController {
     private final UserStorageJpa userStorageJpa;

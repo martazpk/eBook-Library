@@ -1,8 +1,7 @@
-package pl.marta.kopp.service;
+package pl.marta.kopp.persistence;
 
 
 import pl.marta.kopp.domain.Book;
-import pl.marta.kopp.domain.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -24,7 +23,7 @@ public class BookStorageJpa implements BookStorage {
 
     @Override
     public List getAll() {
-        return entityManager.createQuery("from Book").getResultList();
+        return entityManager.createQuery("FROM Book").getResultList();
     }
 
     @Override
@@ -34,7 +33,7 @@ public class BookStorageJpa implements BookStorage {
 
     @Override
     public Boolean isExists(long id) {
-        Query query = entityManager.createQuery("from Book b where b.id=:id ");
+        Query query = entityManager.createQuery("FROM Book b WHERE b.id=:id ");
         query.setParameter("id", id);
         return !(query.getResultList().isEmpty());
     }
@@ -53,4 +52,6 @@ public class BookStorageJpa implements BookStorage {
         entityManager.merge(book);
         entityManager.getTransaction().commit();
     }
+
+
 }

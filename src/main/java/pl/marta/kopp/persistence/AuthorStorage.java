@@ -1,4 +1,4 @@
-package pl.marta.kopp.service;
+package pl.marta.kopp.persistence;
 
 import pl.marta.kopp.domain.Author;
 

@@ -2,8 +2,8 @@ package pl.marta.kopp.CreateDataBase;
 
 import pl.marta.kopp.domain.Author;
 import pl.marta.kopp.domain.Book;
-import pl.marta.kopp.service.AuthorStorage;
-import pl.marta.kopp.service.BookStorage;
+import pl.marta.kopp.persistence.AuthorStorage;
+import pl.marta.kopp.persistence.BookStorage;
 
 import java.util.ArrayList;
 import java.util.List;

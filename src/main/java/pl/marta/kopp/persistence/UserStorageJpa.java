@@ -1,4 +1,4 @@
-package pl.marta.kopp.service;
+package pl.marta.kopp.persistence;
 
 
 import pl.marta.kopp.domain.User;
@@ -16,14 +16,14 @@ public class UserStorageJpa implements UserStorage {
 
     @Override
     public boolean isUserExists(String login) {
-        Query query = entityManager.createQuery("from User u where u.login=:login");
+        Query query = entityManager.createQuery("FROM User u WHERE u.login=:login");
         query.setParameter("login", login);
         return !(query.getResultList().isEmpty());
     }
 
     @Override
     public boolean isUserExists(String login, String password) {
-        Query query = entityManager.createQuery("from User u where u.login=:login AND u.password=:password");
+        Query query = entityManager.createQuery("FROM User u WHERE u.login=:login AND u.password=:password");
         query.setParameter("login", login);
         query.setParameter("password", password);
         return !(query.getResultList().isEmpty());

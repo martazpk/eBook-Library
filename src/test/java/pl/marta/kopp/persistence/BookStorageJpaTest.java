@@ -1,4 +1,4 @@
-package pl.marta.kopp.service;
+package pl.marta.kopp.persistence;
 
 import org.junit.Before;
 import org.junit.Test;

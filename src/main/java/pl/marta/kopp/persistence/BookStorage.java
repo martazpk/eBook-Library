@@ -1,4 +1,4 @@
-package pl.marta.kopp.service;
+package pl.marta.kopp.persistence;
 
 import pl.marta.kopp.domain.Book;
 
@@ -11,4 +11,6 @@ public interface BookStorage {
     Boolean isExists(long id);
     void delete(long id);
     void update(Book book);
+
+
 }

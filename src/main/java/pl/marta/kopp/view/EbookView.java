@@ -1,6 +1,6 @@
 package pl.marta.kopp.view;
 
-import pl.marta.kopp.service.UserStorageJpa;
+import pl.marta.kopp.persistence.UserStorageJpa;
 import pl.marta.kopp.login.LoginController;
 import pl.marta.kopp.login.LoginView;
 import pl.marta.kopp.registration.RegistrationController;
