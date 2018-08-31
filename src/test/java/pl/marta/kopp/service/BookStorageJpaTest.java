@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
 
 public class BookStorageJpaTest {
     private BookStorageJpa bookStorageJpa;
+    private AuthorStorage authorStorage;
     private static final String SOME_TITLE = "Wiersze";
     private static final String ANOTHER_TITLE = "Biblia";
     private static final String SOME_AUTHORS_NAME = "Julian";
@@ -20,7 +21,6 @@ public class BookStorageJpaTest {
     @Before
     public void setUp() throws Exception {
         bookStorageJpa = new BookStorageJpa();
-
     }
 
     @Test
@@ -68,4 +68,14 @@ public class BookStorageJpaTest {
         assertEquals(false,bookStorageJpa.getById(book.getId()).isBorrow());
     }
 
+    @Test
+    public void shouldAddAuthorWhenAddBookWithNewAuthor() throws Exception {
+        authorStorage=new AuthorStorageJpa();
+        List<Author> authors = new ArrayList<>();
+        Author author=new Author(SOME_AUTHORS_NAME, SOME_AUTHORS_SURNAME);
+        authors.add(author);
+        Book book = new Book(SOME_TITLE, authors, true);
+        bookStorageJpa.add(book);
+        assertTrue(authorStorage.isExists(author));
+    }
 }

@@ -27,7 +27,7 @@ public class Book {
         this.borrow = borrow;
     }
 
-    public Book() {
+    private Book() {
     }
 
     public void setBorrow(boolean borrow) {

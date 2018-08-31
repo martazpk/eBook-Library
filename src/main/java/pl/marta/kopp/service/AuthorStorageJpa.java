@@ -39,9 +39,9 @@ public class AuthorStorageJpa implements AuthorStorage {
 
     @Override
     public boolean isExists(Author author) {
-        Query query = entityManager.createQuery("from Author a where a.authorName=:name AND a.authorSurname=:surname ");
-        query.setParameter("name", author.getAuthorName());
-        query.setParameter("surname", author.getAuthorSurname());
+        Query query = entityManager.createQuery("from Author a where a.name=:name AND a.surname=:surname ");
+        query.setParameter("name", author.getName());
+        query.setParameter("surname", author.getSurname());
         return !(query.getResultList().isEmpty());
     }
 }

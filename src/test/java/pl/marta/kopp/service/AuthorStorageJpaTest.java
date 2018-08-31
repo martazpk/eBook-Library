@@ -4,10 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 import pl.marta.kopp.domain.Author;
 import pl.marta.kopp.domain.AuthorAlreadyExistsException;
-import pl.marta.kopp.domain.Book;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -42,8 +38,8 @@ public class AuthorStorageJpaTest {
         Author author = new Author(SOME_NAME, SOME_SURNAME);
         authorStorageJpa.add(author);
         Author byId = authorStorageJpa.get(author.getId());
-        assertEquals(SOME_NAME, byId.getAuthorName());
-        assertEquals(SOME_SURNAME, byId.getAuthorSurname());
+        assertEquals(SOME_NAME, byId.getName());
+        assertEquals(SOME_SURNAME, byId.getSurname());
     }
 
     @Test

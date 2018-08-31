@@ -11,17 +11,19 @@ public class Author {
     @Id
     @GeneratedValue
     private long id;
-    private String authorName;
-    private String authorSurname;
+    private String name;
+    private String surname;
     @ManyToMany(mappedBy = "authors")
     private List<Book> books;
 
-    public Author(String authorName, String authorSurname) {
-        this.authorName = authorName;
-        this.authorSurname = authorSurname;
+    public Author(String name, String surname) {
+        this.name = name;
+        this.surname = surname;
     }
 
-    public Author() {
+    private Author() {
     }
-
+    public String getDisplayName(){
+        return this.name+" "+this.surname;
+    }
 }
