@@ -2,8 +2,8 @@ package pl.marta.kopp.persistence;
 
 import org.junit.Before;
 import org.junit.Test;
-import pl.marta.kopp.domain.Author;
-import pl.marta.kopp.domain.Book;
+import pl.marta.kopp.domain.author.Author;
+import pl.marta.kopp.domain.book.Book;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,15 +27,15 @@ public class BookStorageJpaTest {
     public void shouldAddNewBook() throws Exception {
         List<Author> authors = new ArrayList<>();
         authors.add(new Author(SOME_AUTHORS_NAME, SOME_AUTHORS_SURNAME));
-        Book book = new Book(SOME_TITLE, authors, true);
+        Book book = new Book(SOME_TITLE, authors);
         bookStorageJpa.add(book);
         assertTrue(bookStorageJpa.isExists(book.getId()));
     }
 
     @Test
     public void getAll() throws Exception {
-        bookStorageJpa.add(new Book(SOME_TITLE,null,false));
-        bookStorageJpa.add(new Book(ANOTHER_TITLE,null,false));
+        bookStorageJpa.add(new Book(SOME_TITLE,null));
+        bookStorageJpa.add(new Book(ANOTHER_TITLE,null));
         assertEquals(2,bookStorageJpa.getAll().size());
     }
 
@@ -43,7 +43,7 @@ public class BookStorageJpaTest {
     public void shouldGetBookById() throws Exception {
         List<Author> authors = new ArrayList<>();
         authors.add(new Author(SOME_AUTHORS_NAME, SOME_AUTHORS_SURNAME));
-        Book book = new Book(SOME_TITLE, authors, true);
+        Book book = new Book(SOME_TITLE, authors);
         bookStorageJpa.add(book);
         Book byId = bookStorageJpa.getById(book.getId());
         assertEquals(SOME_TITLE,byId.getTitle());
@@ -52,7 +52,7 @@ public class BookStorageJpaTest {
 
     @Test
     public void shouldDeleteBook() throws Exception {
-        Book book = new Book(SOME_TITLE, null, true);
+        Book book = new Book(SOME_TITLE, null);
         bookStorageJpa.add(book);
         bookStorageJpa.delete(book.getId());
         assertFalse(bookStorageJpa.isExists(book.getId()));
@@ -60,7 +60,7 @@ public class BookStorageJpaTest {
 
     @Test
     public void shouldUpdateBook() throws Exception {
-        Book book = new Book(SOME_TITLE, null, true);
+        Book book = new Book(SOME_TITLE, null);
         bookStorageJpa.add(book);
         Book updatedBook=bookStorageJpa.getById(book.getId());
         updatedBook.setBorrow(false);
@@ -74,7 +74,7 @@ public class BookStorageJpaTest {
         List<Author> authors = new ArrayList<>();
         Author author=new Author(SOME_AUTHORS_NAME, SOME_AUTHORS_SURNAME);
         authors.add(author);
-        Book book = new Book(SOME_TITLE, authors, true);
+        Book book = new Book(SOME_TITLE, authors);
         bookStorageJpa.add(book);
         assertTrue(authorStorage.isExists(author));
     }

@@ -1,8 +1,8 @@
 package pl.marta.kopp.persistence;
 
 
-import pl.marta.kopp.domain.Author;
-import pl.marta.kopp.domain.AuthorAlreadyExistsException;
+import pl.marta.kopp.domain.author.Author;
+import pl.marta.kopp.domain.author.AuthorAlreadyExistsException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

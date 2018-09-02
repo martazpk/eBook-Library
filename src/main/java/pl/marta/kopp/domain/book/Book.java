@@ -1,6 +1,7 @@
-package pl.marta.kopp.domain;
+package pl.marta.kopp.domain.book;
 
 import lombok.Getter;
+import pl.marta.kopp.domain.author.Author;
 
 import javax.persistence.*;
 import java.util.List;
@@ -21,10 +22,11 @@ public class Book {
     private List<Author> authors;
 
 
-    public Book(String title, List<Author> authors, boolean borrow) {
+
+    public Book(String title, List<Author> authors) {
         this.title = title;
         this.authors = authors;
-        this.borrow = borrow;
+        this.borrow = false;
     }
 
     private Book() {

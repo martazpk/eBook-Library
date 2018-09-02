@@ -1,7 +1,7 @@
 package pl.marta.kopp.persistence;
 
 
-import pl.marta.kopp.domain.User;
+import pl.marta.kopp.domain.user.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

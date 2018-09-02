@@ -1,6 +1,6 @@
 package pl.marta.kopp.persistence;
 
-import pl.marta.kopp.domain.User;
+import pl.marta.kopp.domain.user.User;
 
 public interface UserStorage {
     boolean isUserExists(String login);

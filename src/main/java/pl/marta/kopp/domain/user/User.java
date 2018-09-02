@@ -1,8 +1,9 @@
-package pl.marta.kopp.domain;
+package pl.marta.kopp.domain.user;
 
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table
@@ -13,8 +14,8 @@ public class User {
     private Long id;
     @Column( unique = true )
     private String login;
-    @Column
     private String password;
+
 
     public User(String login, String password) {
         this.login = login;

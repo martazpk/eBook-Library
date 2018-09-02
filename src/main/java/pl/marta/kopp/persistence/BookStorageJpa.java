@@ -1,7 +1,7 @@
 package pl.marta.kopp.persistence;
 
 
-import pl.marta.kopp.domain.Book;
+import pl.marta.kopp.domain.book.Book;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -49,6 +49,16 @@ public class BookStorageJpa implements BookStorage {
     @Override
     public void update(Book book) {
         entityManager.getTransaction().begin();
+        entityManager.merge(book);
+        entityManager.getTransaction().commit();
+    }
+
+
+    @Override
+    public void setBorrow(long id) {
+        entityManager.getTransaction().begin();
+        Book book = entityManager.find(Book.class, id);
+        book.setBorrow(true);
         entityManager.merge(book);
         entityManager.getTransaction().commit();
     }

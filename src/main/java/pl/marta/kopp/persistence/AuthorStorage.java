@@ -1,6 +1,6 @@
 package pl.marta.kopp.persistence;
 
-import pl.marta.kopp.domain.Author;
+import pl.marta.kopp.domain.author.Author;
 
 public interface AuthorStorage {
     void add(Author author);

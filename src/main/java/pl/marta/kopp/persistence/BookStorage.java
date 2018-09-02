@@ -1,6 +1,6 @@
 package pl.marta.kopp.persistence;
 
-import pl.marta.kopp.domain.Book;
+import pl.marta.kopp.domain.book.Book;
 
 import java.util.List;
 
@@ -13,4 +13,5 @@ public interface BookStorage {
     void update(Book book);
 
 
+    void setBorrow(long id);
 }

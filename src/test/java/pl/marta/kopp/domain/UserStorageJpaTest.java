@@ -2,6 +2,7 @@ package pl.marta.kopp.domain;
 
 
 import org.junit.Test;
+import pl.marta.kopp.domain.user.User;
 import pl.marta.kopp.persistence.UserStorageJpa;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

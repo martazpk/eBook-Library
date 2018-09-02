@@ -2,8 +2,8 @@ package pl.marta.kopp.persistence;
 
 import org.junit.Before;
 import org.junit.Test;
-import pl.marta.kopp.domain.Author;
-import pl.marta.kopp.domain.AuthorAlreadyExistsException;
+import pl.marta.kopp.domain.author.Author;
+import pl.marta.kopp.domain.author.AuthorAlreadyExistsException;
 
 import static org.junit.Assert.*;
 

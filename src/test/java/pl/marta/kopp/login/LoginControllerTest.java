@@ -1,7 +1,7 @@
 package pl.marta.kopp.login;
 
 import pl.marta.kopp.communication.Response;
-import pl.marta.kopp.domain.User;
+import pl.marta.kopp.domain.user.User;
 import pl.marta.kopp.persistence.UserStorageJpa;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,8 +15,8 @@ public class LoginControllerTest {
 
     private final UserStorageJpa userStorageJpa = new UserStorageJpa();
     private final LoginController loginController = new LoginController(userStorageJpa);
-    private static final String SOME_LOGIN = "spiderman";
-    private static final String ANOTHER_LOGIN = "ironman";
+    private static final String SOME_LOGIN = "spider-man";
+    private static final String ANOTHER_LOGIN = "iron-man";
     private static final String SOME_PASSWORD = "spider123";
 
     @Before
