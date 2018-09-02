@@ -55,10 +55,10 @@ public class BookStorageJpa implements BookStorage {
 
 
     @Override
-    public void setBorrow(long id) {
+    public void setBorrow(long id,boolean condition) {
         entityManager.getTransaction().begin();
         Book book = entityManager.find(Book.class, id);
-        book.setBorrow(true);
+        book.setBorrow(condition);
         entityManager.merge(book);
         entityManager.getTransaction().commit();
     }

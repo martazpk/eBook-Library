@@ -11,7 +11,5 @@ public interface BookStorage {
     Boolean isExists(long id);
     void delete(long id);
     void update(Book book);
-
-
-    void setBorrow(long id);
+    void setBorrow(long id,boolean condition);
 }

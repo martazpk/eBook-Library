@@ -2,10 +2,9 @@ package pl.marta.kopp.borrow;
 
 import pl.marta.kopp.communication.Response;
 import pl.marta.kopp.domain.book.Book;
-import pl.marta.kopp.domain.boorow.Borrow;
+import pl.marta.kopp.domain.borrow.Borrow;
 import pl.marta.kopp.persistence.BookStorage;
 import pl.marta.kopp.persistence.BorrowStorage;
-import pl.marta.kopp.persistence.UserStorage;
 
 public class BorrowingController {
     private final BookStorage bookStorage;
@@ -26,7 +25,7 @@ public class BorrowingController {
     }
 
     private void borrow(long bookId,long userId){
-        bookStorage.setBorrow(bookId);
+        bookStorage.setBorrow(bookId,true);
         Borrow newBorrow= new Borrow(bookId,userId);
         borrowStorage.add(newBorrow);
     }

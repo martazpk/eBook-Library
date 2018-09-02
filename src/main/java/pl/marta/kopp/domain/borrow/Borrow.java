@@ -1,14 +1,11 @@
-package pl.marta.kopp.domain.boorow;
+package pl.marta.kopp.domain.borrow;
 
 
-import lombok.Setter;
 import lombok.Getter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import java.sql.Date;
 import java.util.Calendar;
 
 

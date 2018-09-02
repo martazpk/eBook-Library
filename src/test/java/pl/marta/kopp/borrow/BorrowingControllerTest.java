@@ -1,15 +1,9 @@
 package pl.marta.kopp.borrow;
 
-import org.junit.Before;
 import org.junit.Test;
 import pl.marta.kopp.communication.Response;
-import pl.marta.kopp.domain.author.Author;
 import pl.marta.kopp.domain.book.Book;
-import pl.marta.kopp.domain.boorow.Borrow;
 import pl.marta.kopp.persistence.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.*;
 
