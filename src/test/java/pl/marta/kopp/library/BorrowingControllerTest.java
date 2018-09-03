@@ -1,8 +1,9 @@
-package pl.marta.kopp.borrow;
+package pl.marta.kopp.library;
 
 import org.junit.Test;
 import pl.marta.kopp.communication.Response;
 import pl.marta.kopp.domain.book.Book;
+import pl.marta.kopp.domain.borrow.Borrow;
 import pl.marta.kopp.persistence.*;
 
 import static org.junit.Assert.*;
@@ -27,6 +28,7 @@ public class BorrowingControllerTest {
     public void shouldNotBorrowBookWhenBookIsAlreadyBorrowed() throws Exception {
         Book book=new Book(SOME_TITLE,null);
         bookStorage.add(book);
+        controller.borrowBook(book.getId(),SOME_USER_ID);
         Response result=controller.borrowBook(book.getId(),SOME_USER_ID);
         assertFalse(result.getSuccess());
         assertEquals("Sorry, this book is already borrowed",result.getMessage());

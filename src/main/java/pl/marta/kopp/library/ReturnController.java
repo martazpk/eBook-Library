@@ -1,4 +1,4 @@
-package pl.marta.kopp.returnBook;
+package pl.marta.kopp.library;
 
 import pl.marta.kopp.communication.Response;
 import pl.marta.kopp.domain.book.Book;
