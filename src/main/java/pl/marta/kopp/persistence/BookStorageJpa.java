@@ -26,6 +26,10 @@ public class BookStorageJpa implements BookStorage {
         return entityManager.createQuery("FROM Book").getResultList();
     }
 
+    public List getPresentBooks(){
+        return entityManager.createQuery("FROM Book b WHERE b.borrow=false").getResultList();
+    }
+
     @Override
     public Book getById(long id) {
         return entityManager.find(Book.class, id);
@@ -62,6 +66,4 @@ public class BookStorageJpa implements BookStorage {
         entityManager.merge(book);
         entityManager.getTransaction().commit();
     }
-
-
 }

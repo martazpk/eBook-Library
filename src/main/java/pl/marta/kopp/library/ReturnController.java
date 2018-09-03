@@ -19,7 +19,7 @@ public class ReturnController {
         if (borrowStorage.isExistsUserId(userId)) {
             if (borrowStorage.isExistsBookId(bookId)) {
                 deleteBorrow(bookId);
-                setBookBorrow(bookId);
+                bookStorage.setBorrow(bookId,false);
                 return Response.aSuccessfulResponse();
             } else return Response.aFailureResponse("You don't have any borrowed book.");
         } else return Response.aFailureResponse("Invalid Book Id");
@@ -30,11 +30,6 @@ public class ReturnController {
         borrowStorage.delete(borrow.getId());
     }
 
-    private void setBookBorrow(long bookId) {
-        Book book = bookStorage.getById(bookId);
-        book.setBorrow(false);
-        bookStorage.update(book);
-    }
 }
 
 

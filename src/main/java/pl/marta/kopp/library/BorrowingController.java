@@ -19,20 +19,13 @@ public class BorrowingController {
         if (bookStorage.isExists(bookId)) {
             Book book = bookStorage.getById(bookId);
             if (book.isBorrow()) return Response.aFailureResponse("Sorry, this book is already borrowed");
-            else setBookBorrow(book);
-            addNewBorrow(bookId, userId);
+            else bookStorage.setBorrow(bookId,true);
+            borrowStorage.add(bookId,userId);
             return Response.aSuccessfulResponse();
         }
         return Response.aFailureResponse("Sorry, this book is not our catalog.");
     }
 
-    private void setBookBorrow(Book book) {
-        book.setBorrow(true);
-        bookStorage.update(book);
-    }
 
-    private void addNewBorrow(long bookId, long userId) {
-        Borrow newBorrow = new Borrow.Builder().bookId(bookId).userId(userId).build();
-        borrowStorage.add(newBorrow);
-    }
+
 }

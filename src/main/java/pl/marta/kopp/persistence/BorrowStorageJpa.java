@@ -8,7 +8,8 @@ public class BorrowStorageJpa  implements BorrowStorage{
     EntityManagerFactory factory = Persistence.createEntityManagerFactory("eBookPersistence");
     EntityManager entityManager = factory.createEntityManager();
     @Override
-    public void add(Borrow borrow) {
+    public void add(long bookId, long userId) {
+        Borrow borrow=new Borrow.Builder().bookId(bookId).userId(userId).build();
         entityManager.getTransaction().begin();
         entityManager.persist(borrow);
         entityManager.getTransaction().commit();
@@ -38,7 +39,6 @@ public class BorrowStorageJpa  implements BorrowStorage{
 
     @Override
     public Borrow getByBookId(long userId) {
-
         TypedQuery<Borrow> query = entityManager.createQuery("FROM Borrow b WHERE b.bookId=:bookId", Borrow.class);
         query.setParameter("bookId", userId);
         return query.getSingleResult();
