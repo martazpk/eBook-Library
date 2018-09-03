@@ -35,6 +35,4 @@ public class BorrowingController {
         Borrow newBorrow = new Borrow.Builder().bookId(bookId).userId(userId).build();
         borrowStorage.add(newBorrow);
     }
-
-
 }
