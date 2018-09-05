@@ -27,7 +27,6 @@ public class LoginView {
 
     }
 
-
     public void show() {
         systemInterface.display("Podaj login: ");
         String login = systemInterface.read();
@@ -38,7 +37,6 @@ public class LoginView {
         if (response.getSuccess()) {
             systemInterface.display("");
             systemInterface.display("Witaj " + login);
-            usersMenu.show();
             usersView.show(controller.getUser(login,password));
 
         } else {

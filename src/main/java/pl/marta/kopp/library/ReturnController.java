@@ -50,6 +50,12 @@ public class ReturnController {
         }
         return books;
     }
+
+    public Book getBookById(int id) {
+        if(bookStorage.isExists(id))
+            return bookStorage.getById(id);
+        else throw new BookDoesNotExistsException(id);
+    }
 }
 
 

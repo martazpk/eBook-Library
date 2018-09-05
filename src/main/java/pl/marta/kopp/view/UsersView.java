@@ -34,7 +34,8 @@ public class UsersView {
 
             } else if (option == 2) {
                 borrowedBooksByUserView.show(user);
-
+                returnView.show(user);
+                show(user);
 
             } else if (option == 5) {
                 System.exit(0);
@@ -43,9 +44,7 @@ public class UsersView {
             }
         } catch (NumberFormatException e) {
             aFailureChoice();
-
         }
-
     }
 
     private void aFailureChoice() {
