@@ -1,15 +1,11 @@
 package pl.marta.kopp.persistence;
-
-
 import pl.marta.kopp.domain.user.User;
 
 import javax.persistence.*;
 
-
 public class UserStorageJpa implements UserStorage {
     EntityManagerFactory factory = Persistence.createEntityManagerFactory("eBookPersistence");
     EntityManager entityManager = factory.createEntityManager();
-
 
     @Override
     public boolean isUserExists(String login) {
@@ -17,7 +13,6 @@ public class UserStorageJpa implements UserStorage {
         query.setParameter("login", login);
         return !(query.getResultList().isEmpty());
     }
-
     @Override
     public boolean isUserExists(String login, String password) {
         Query query = entityManager.createQuery("FROM User u WHERE u.login=:login AND u.password=:password");
@@ -25,7 +20,6 @@ public class UserStorageJpa implements UserStorage {
         query.setParameter("password", password);
         return !(query.getResultList().isEmpty());
     }
-
     @Override
     public void addUser(User user) {
         entityManager.getTransaction().begin();
@@ -39,9 +33,7 @@ public class UserStorageJpa implements UserStorage {
         User user = entityManager.find(User.class, id);
         entityManager.remove(user);
         entityManager.getTransaction().commit();
-
     }
-
     @Override
     public void update(User user) {
         entityManager.getTransaction().begin();
@@ -52,7 +44,6 @@ public class UserStorageJpa implements UserStorage {
     @Override
     public User getById(long id) {
         return entityManager.find(User.class, id);
-
     }
 
     @Override
@@ -61,6 +52,5 @@ public class UserStorageJpa implements UserStorage {
         query.setParameter("login", login);
         query.setParameter("password", password);
         return query.getSingleResult();
-
     }
 }

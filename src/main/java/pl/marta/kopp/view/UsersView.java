@@ -1,14 +1,7 @@
 package pl.marta.kopp.view;
 
 import pl.marta.kopp.domain.user.User;
-import pl.marta.kopp.library.BorrowingController;
-import pl.marta.kopp.library.BorrowingView;
-import pl.marta.kopp.library.ReturnController;
-import pl.marta.kopp.library.ReturnView;
-import pl.marta.kopp.persistence.BookStorage;
-import pl.marta.kopp.persistence.BookStorageJpa;
-import pl.marta.kopp.persistence.BorrowStorage;
-import pl.marta.kopp.persistence.BorrowStorageJpa;
+import pl.marta.kopp.library.*;
 
 public class UsersView {
     private final SystemInterface systemInterface;
@@ -16,26 +9,32 @@ public class UsersView {
     private final BorrowingView borrowingView;
     private final ReturnView returnView;
     private final PresentBooksView presentBooksView;
+    private final BorrowedBooksByUserView borrowedBooksByUserView;
 
 
-    public UsersView(SystemInterface systemInterface, BorrowingController borrowingController, ReturnController returnController) {
+    public UsersView(SystemInterface systemInterface, BorrowingController borrowingController,
+                     ReturnController returnController) {
         this.systemInterface = systemInterface;
         this.usersMenu = new UsersMenu(systemInterface);
         this.borrowingView = new BorrowingView(systemInterface, borrowingController);
         this.returnView = new ReturnView(systemInterface, returnController);
         this.presentBooksView=new PresentBooksView(systemInterface,borrowingController);
+        this.borrowedBooksByUserView=new BorrowedBooksByUserView(systemInterface,returnController);
     }
 
     public void show(User user) {
+        usersMenu.show();
         try {
             int option = Integer.parseInt(systemInterface.read());
 
             if (option == 1) {
                 presentBooksView.show();
                 borrowingView.show(user);
+                show(user);
 
             } else if (option == 2) {
-                returnView.show();
+                borrowedBooksByUserView.show(user);
+
 
             } else if (option == 5) {
                 System.exit(0);

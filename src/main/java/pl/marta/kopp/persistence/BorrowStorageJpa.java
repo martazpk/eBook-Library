@@ -50,9 +50,4 @@ public class BorrowStorageJpa  implements BorrowStorage{
         query.setParameter("userId", userId);
         return query.getResultList();
     }
-//    public List<Long> getBookIdByUserId(long userId) {
-//        TypedQuery<Long> query = entityManager.createQuery("SELECT b.bookId FROM Borrow b WHERE b.bookId=:bookId", Long.class);
-//        query.setParameter("userId", userId);
-//        return query.getResultList();
-//    }
 }

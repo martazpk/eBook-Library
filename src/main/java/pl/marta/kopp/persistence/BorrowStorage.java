@@ -12,5 +12,4 @@ public interface BorrowStorage {
     Borrow getByBookId(long id);
     List<Borrow> getByUserId(long userId);
 
-
 }

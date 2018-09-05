@@ -1,8 +1,9 @@
-package pl.marta.kopp.view;
+package pl.marta.kopp.library;
 
 import pl.marta.kopp.domain.book.Book;
 import pl.marta.kopp.library.BorrowingController;
 import pl.marta.kopp.persistence.BookStorage;
+import pl.marta.kopp.view.SystemInterface;
 
 import java.util.List;
 
