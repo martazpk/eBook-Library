@@ -19,6 +19,5 @@ public class RegistrationController {
         if (userStorage.isUserExists(login)) return Response.aFailureResponse("User already exists");
         userStorage.addUser(new User(login, password));
         return Response.aSuccessfulResponse();
-
     }
 }

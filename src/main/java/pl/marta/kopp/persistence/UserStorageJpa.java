@@ -2,10 +2,8 @@ package pl.marta.kopp.persistence;
 
 
 import pl.marta.kopp.domain.user.User;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+
+import javax.persistence.*;
 
 
 public class UserStorageJpa implements UserStorage {
@@ -54,6 +52,15 @@ public class UserStorageJpa implements UserStorage {
     @Override
     public User getById(long id) {
         return entityManager.find(User.class, id);
+
+    }
+
+    @Override
+    public User getByLoginAndPassword(String login, String password) {
+        TypedQuery<User> query = entityManager.createQuery("FROM User u WHERE u.login=:login AND u.password=:password", User.class);
+        query.setParameter("login", login);
+        query.setParameter("password", password);
+        return query.getSingleResult();
 
     }
 }

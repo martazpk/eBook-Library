@@ -1,5 +1,6 @@
 package pl.marta.kopp.view;
 
+import pl.marta.kopp.domain.user.User;
 import pl.marta.kopp.library.BorrowingController;
 import pl.marta.kopp.library.BorrowingView;
 import pl.marta.kopp.library.ReturnController;
@@ -25,13 +26,13 @@ public class UsersView {
         this.presentBooksView=new PresentBooksView(systemInterface,borrowingController);
     }
 
-    public void show() {
+    public void show(User user) {
         try {
             int option = Integer.parseInt(systemInterface.read());
 
             if (option == 1) {
                 presentBooksView.show();
-                borrowingView.show();
+                borrowingView.show(user);
 
             } else if (option == 2) {
                 returnView.show();

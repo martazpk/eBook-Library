@@ -9,4 +9,6 @@ public interface UserStorage {
     void delete (long id);
     void update(User user);
     User getById(long id);
+
+    User getByLoginAndPassword(String login, String password);
 }

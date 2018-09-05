@@ -19,8 +19,6 @@ public class LoginView {
     private final UsersView usersView;
 
 
-
-
     public LoginView(SystemInterface systemInterface, LoginController controller, BorrowingController borrowingController, ReturnController returnController) {
         this.systemInterface = systemInterface;
         this.controller = controller;
@@ -28,6 +26,7 @@ public class LoginView {
         this.usersView=new UsersView(systemInterface,borrowingController,returnController);
 
     }
+
 
     public void show() {
         systemInterface.display("Podaj login: ");
@@ -37,13 +36,15 @@ public class LoginView {
 
         Response response = controller.login(login, password);
         if (response.getSuccess()) {
+            systemInterface.display("");
             systemInterface.display("Witaj " + login);
             usersMenu.show();
-            usersView.show();
+            usersView.show(controller.getUser(login,password));
 
         } else {
             systemInterface.display("Błędne logowanie " + response.getMessage());
             show();
         }
+
     }
 }
