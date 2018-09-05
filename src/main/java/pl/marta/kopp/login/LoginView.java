@@ -2,6 +2,8 @@ package pl.marta.kopp.login;
 
 import pl.marta.kopp.communication.Response;
 import pl.marta.kopp.domain.user.User;
+import pl.marta.kopp.library.BorrowingController;
+import pl.marta.kopp.library.ReturnController;
 import pl.marta.kopp.persistence.BookStorage;
 import pl.marta.kopp.persistence.BookStorageJpa;
 import pl.marta.kopp.persistence.BorrowStorage;
@@ -19,11 +21,11 @@ public class LoginView {
 
 
 
-    public LoginView(SystemInterface systemInterface, LoginController controller, BookStorage bookStorage, BorrowStorage borrowStorage) {
+    public LoginView(SystemInterface systemInterface, LoginController controller, BorrowingController borrowingController, ReturnController returnController) {
         this.systemInterface = systemInterface;
         this.controller = controller;
         usersMenu = new UsersMenu(systemInterface);
-        this.usersView=new UsersView(systemInterface,bookStorage,borrowStorage);
+        this.usersView=new UsersView(systemInterface,borrowingController,returnController);
 
     }
 

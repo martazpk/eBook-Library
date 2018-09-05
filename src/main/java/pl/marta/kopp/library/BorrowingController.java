@@ -6,6 +6,8 @@ import pl.marta.kopp.domain.borrow.Borrow;
 import pl.marta.kopp.persistence.BookStorage;
 import pl.marta.kopp.persistence.BorrowStorage;
 
+import java.util.List;
+
 public class BorrowingController {
     private final BookStorage bookStorage;
     private final BorrowStorage borrowStorage;
@@ -27,5 +29,7 @@ public class BorrowingController {
     }
 
 
-
+    public List<Book> getPresentBooks() {
+        return bookStorage.getPresentBooks();
+    }
 }

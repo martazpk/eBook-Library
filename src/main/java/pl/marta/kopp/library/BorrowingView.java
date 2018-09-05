@@ -11,12 +11,12 @@ public class BorrowingView {
     private final BorrowingController borrowingController;
 
 
-    public BorrowingView(SystemInterface systemInterface, BorrowingController borrowingController,BookStorage bookStorage ) {
+    public BorrowingView(SystemInterface systemInterface, BorrowingController borrowingController ) {
         this.systemInterface = systemInterface;
         this.borrowingController = borrowingController;
     }
 
     public void show() {
-        systemInterface.display("Success BorrowingView");
+
     }
 }

@@ -1,24 +1,25 @@
 package pl.marta.kopp.view;
+
 import pl.marta.kopp.domain.book.Book;
+import pl.marta.kopp.library.BorrowingController;
 import pl.marta.kopp.persistence.BookStorage;
 
 import java.util.List;
 
 public class PresentBooksView {
     private final SystemInterface systemInterface;
-    private final BookStorage bookStorage;
+    private final BorrowingController borrowingController;
 
-    public PresentBooksView(SystemInterface systemInterface, BookStorage bookStorage) {
+    public PresentBooksView(SystemInterface systemInterface, BorrowingController borrowingController) {
         this.systemInterface = systemInterface;
-        this.bookStorage=bookStorage;
+        this.borrowingController = borrowingController;
     }
 
-    public void show(){
-        systemInterface.display("PresentBooksView success");
-
-        List<Book> presentBooks=bookStorage.getAll();
-        System.out.println(presentBooks.size());
-        for (Book b:presentBooks) {
+    public void show() {
+        systemInterface.display("");
+        systemInterface.display("Dostępne książki:");
+        List<Book> presentBooks = borrowingController.getPresentBooks();
+        for (Book b : presentBooks) {
             systemInterface.display(b.toString());
         }
     }

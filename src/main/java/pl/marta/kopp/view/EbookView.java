@@ -1,5 +1,7 @@
 package pl.marta.kopp.view;
 
+import pl.marta.kopp.library.BorrowingController;
+import pl.marta.kopp.library.ReturnController;
 import pl.marta.kopp.persistence.*;
 import pl.marta.kopp.login.LoginController;
 import pl.marta.kopp.login.LoginView;
@@ -13,11 +15,11 @@ public class EbookView {
     private final RegistrationView registrationView;
 
 
-    public EbookView(SystemInterface systemInterface, UserStorage userStorage, BookStorage bookStorageJpa, BorrowStorage borrowStorage) {
+    public EbookView(SystemInterface systemInterface, LoginController loginController, BorrowingController borrowingController, ReturnController returnController,RegistrationController registrationController) {
         this.systemInterface = systemInterface;
         mainMenu = new MainMenu(systemInterface);
-        loginView = new LoginView(systemInterface, new LoginController(userStorage),bookStorageJpa,borrowStorage);
-        registrationView = new RegistrationView(systemInterface, new RegistrationController(userStorage));
+        loginView = new LoginView(systemInterface, loginController,borrowingController,returnController);
+        registrationView = new RegistrationView(systemInterface,registrationController);
     }
 
     public void show() {
