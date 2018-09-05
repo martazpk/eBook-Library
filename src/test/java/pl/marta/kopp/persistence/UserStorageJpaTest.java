@@ -1,4 +1,4 @@
-package pl.marta.kopp.domain;
+package pl.marta.kopp.persistence;
 
 
 import org.junit.Test;

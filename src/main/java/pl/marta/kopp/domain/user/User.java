@@ -1,8 +1,11 @@
 package pl.marta.kopp.domain.user;
 
 import lombok.Getter;
+import pl.marta.kopp.domain.book.Book;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity

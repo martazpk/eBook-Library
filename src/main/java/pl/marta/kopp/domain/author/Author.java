@@ -24,7 +24,10 @@ public class Author {
 
     private Author() {
     }
-    public String getDisplayName(){
+    @Override
+    public String toString(){
         return this.name+" "+this.surname;
     }
+
+
 }

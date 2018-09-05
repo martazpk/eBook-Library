@@ -21,6 +21,7 @@ public class BookStorageJpaTest {
     @Before
     public void setUp() throws Exception {
         bookStorageJpa = new BookStorageJpa();
+        authorStorage=new AuthorStorageJpa();
     }
 
     @Test

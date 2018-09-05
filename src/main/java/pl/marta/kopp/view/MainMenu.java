@@ -1,9 +1,11 @@
 package pl.marta.kopp.view;
 
-import java.util.Scanner;
-
 public class MainMenu {
-    private final SystemInterface systemInterface=new CliSystemInterface(new Scanner(System.in));
+    private final SystemInterface systemInterface;
+
+    public MainMenu(SystemInterface systemInterface) {
+        this.systemInterface = systemInterface;
+    }
 
     void show(){
         systemInterface.display("*********************************************");

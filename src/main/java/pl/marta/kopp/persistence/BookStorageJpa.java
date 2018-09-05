@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 public class BookStorageJpa implements BookStorage {
+
     EntityManagerFactory factory = Persistence.createEntityManagerFactory("eBookPersistence");
     EntityManager entityManager = factory.createEntityManager();
 
@@ -27,7 +28,7 @@ public class BookStorageJpa implements BookStorage {
     }
 
     public List getPresentBooks(){
-        return entityManager.createQuery("FROM Book b WHERE b.borrow=false").getResultList();
+        return entityManager.createQuery("FROM Book b WHERE b.borrow=false",Book.class).getResultList();
     }
 
     @Override

@@ -11,14 +11,14 @@ import java.util.List;
 @Getter
 public class Book {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column
     private Long id;
     @Column
     private String title;
     private boolean borrow;
     @JoinColumn
-    @ManyToMany(cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private List<Author> authors;
 
 
@@ -39,4 +39,15 @@ public class Book {
     public void setAuthors(List<Author> authors) {
         this.authors = authors;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", borrow=" + borrow +
+                ", authors=" + authors +
+                '}';
+    }
+
 }

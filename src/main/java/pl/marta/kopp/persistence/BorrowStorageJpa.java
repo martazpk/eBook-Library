@@ -3,6 +3,7 @@ package pl.marta.kopp.persistence;
 import pl.marta.kopp.domain.borrow.Borrow;
 
 import javax.persistence.*;
+import java.util.List;
 
 public class BorrowStorageJpa  implements BorrowStorage{
     EntityManagerFactory factory = Persistence.createEntityManagerFactory("eBookPersistence");
@@ -38,9 +39,20 @@ public class BorrowStorageJpa  implements BorrowStorage{
     }
 
     @Override
-    public Borrow getByBookId(long userId) {
+    public Borrow getByBookId(long bookId) {
         TypedQuery<Borrow> query = entityManager.createQuery("FROM Borrow b WHERE b.bookId=:bookId", Borrow.class);
-        query.setParameter("bookId", userId);
+        query.setParameter("bookId", bookId);
         return query.getSingleResult();
     }
+    @Override
+    public List<Borrow> getByUserId(long userId) {
+        TypedQuery<Borrow> query = entityManager.createQuery("FROM Borrow b WHERE b.userId=:userId", Borrow.class);
+        query.setParameter("userId", userId);
+        return query.getResultList();
+    }
+//    public List<Long> getBookIdByUserId(long userId) {
+//        TypedQuery<Long> query = entityManager.createQuery("SELECT b.bookId FROM Borrow b WHERE b.bookId=:bookId", Long.class);
+//        query.setParameter("userId", userId);
+//        return query.getResultList();
+//    }
 }
