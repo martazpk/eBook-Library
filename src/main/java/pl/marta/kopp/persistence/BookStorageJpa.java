@@ -1,7 +1,7 @@
 package pl.marta.kopp.persistence;
 
 
-import pl.marta.kopp.domain.book.Book;
+import pl.marta.kopp.domain.model.Book;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

@@ -1,7 +1,7 @@
 package pl.marta.kopp.configuration;
 
-import pl.marta.kopp.domain.author.Author;
-import pl.marta.kopp.domain.book.Book;
+import pl.marta.kopp.domain.model.Author;
+import pl.marta.kopp.domain.model.Book;
 import pl.marta.kopp.persistence.BookStorage;
 
 import java.util.ArrayList;

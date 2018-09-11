@@ -1,7 +1,7 @@
 package pl.marta.kopp.registration;
 
 import pl.marta.kopp.communication.Response;
-import pl.marta.kopp.domain.user.User;
+import pl.marta.kopp.domain.model.User;
 import pl.marta.kopp.persistence.UserStorageJpa;
 import org.junit.Before;
 import org.junit.Test;

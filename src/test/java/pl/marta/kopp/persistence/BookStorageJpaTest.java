@@ -2,8 +2,8 @@ package pl.marta.kopp.persistence;
 
 import org.junit.Before;
 import org.junit.Test;
-import pl.marta.kopp.domain.author.Author;
-import pl.marta.kopp.domain.book.Book;
+import pl.marta.kopp.domain.model.Author;
+import pl.marta.kopp.domain.model.Book;
 
 import java.util.ArrayList;
 import java.util.List;

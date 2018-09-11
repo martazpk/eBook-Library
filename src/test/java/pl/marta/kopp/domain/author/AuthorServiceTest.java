@@ -2,6 +2,9 @@ package pl.marta.kopp.domain.author;
 
 import org.junit.Before;
 import org.junit.Test;
+import pl.marta.kopp.domain.model.Author;
+import pl.marta.kopp.domain.service.AuthorService;
+import pl.marta.kopp.domain.service.exception.AuthorAlreadyExistsException;
 import pl.marta.kopp.persistence.AuthorStorageJpa;
 
 import static org.junit.Assert.*;

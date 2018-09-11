@@ -1,6 +1,6 @@
 package pl.marta.kopp.persistence;
 
-import pl.marta.kopp.domain.borrow.Borrow;
+import pl.marta.kopp.domain.model.Borrow;
 
 import javax.persistence.*;
 import java.util.List;

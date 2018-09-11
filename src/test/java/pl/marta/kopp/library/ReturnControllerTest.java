@@ -1,9 +1,8 @@
 package pl.marta.kopp.library;
 
 import org.junit.Test;
-import pl.marta.kopp.library.BorrowingController;
 import pl.marta.kopp.communication.Response;
-import pl.marta.kopp.domain.book.Book;
+import pl.marta.kopp.domain.model.Book;
 import pl.marta.kopp.persistence.BookStorage;
 import pl.marta.kopp.persistence.BookStorageJpa;
 import pl.marta.kopp.persistence.BorrowStorage;

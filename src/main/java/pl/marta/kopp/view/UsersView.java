@@ -1,6 +1,6 @@
 package pl.marta.kopp.view;
 
-import pl.marta.kopp.domain.user.User;
+import pl.marta.kopp.domain.model.User;
 import pl.marta.kopp.library.*;
 
 public class UsersView {

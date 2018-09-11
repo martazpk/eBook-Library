@@ -1,5 +1,5 @@
 package pl.marta.kopp.persistence;
-import pl.marta.kopp.domain.user.User;
+import pl.marta.kopp.domain.model.User;
 
 import javax.persistence.*;
 

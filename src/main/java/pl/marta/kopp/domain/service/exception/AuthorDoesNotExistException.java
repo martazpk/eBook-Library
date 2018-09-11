@@ -1,4 +1,4 @@
-package pl.marta.kopp.domain.author;
+package pl.marta.kopp.domain.service.exception;
 
 public class AuthorDoesNotExistException extends RuntimeException {
     public AuthorDoesNotExistException(long id) {

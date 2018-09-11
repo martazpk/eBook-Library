@@ -1,9 +1,8 @@
 package pl.marta.kopp.registration;
 
 import pl.marta.kopp.communication.Response;
-import pl.marta.kopp.domain.user.User;
+import pl.marta.kopp.domain.model.User;
 import pl.marta.kopp.persistence.UserStorage;
-import pl.marta.kopp.persistence.UserStorageJpa;
 
 public class RegistrationController {
     private static final int MIN_LENGTH = 4;

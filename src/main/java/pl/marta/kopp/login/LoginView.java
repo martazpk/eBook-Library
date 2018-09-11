@@ -1,13 +1,8 @@
 package pl.marta.kopp.login;
 
 import pl.marta.kopp.communication.Response;
-import pl.marta.kopp.domain.user.User;
 import pl.marta.kopp.library.BorrowingController;
 import pl.marta.kopp.library.ReturnController;
-import pl.marta.kopp.persistence.BookStorage;
-import pl.marta.kopp.persistence.BookStorageJpa;
-import pl.marta.kopp.persistence.BorrowStorage;
-import pl.marta.kopp.persistence.BorrowStorageJpa;
 import pl.marta.kopp.view.UsersMenu;
 import pl.marta.kopp.view.SystemInterface;
 import pl.marta.kopp.view.UsersView;

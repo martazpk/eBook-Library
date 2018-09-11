@@ -2,8 +2,7 @@ package pl.marta.kopp.library;
 
 import org.junit.Test;
 import pl.marta.kopp.communication.Response;
-import pl.marta.kopp.domain.book.Book;
-import pl.marta.kopp.domain.borrow.Borrow;
+import pl.marta.kopp.domain.model.Book;
 import pl.marta.kopp.persistence.*;
 
 import static org.junit.Assert.*;

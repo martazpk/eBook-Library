@@ -1,7 +1,7 @@
 package pl.marta.kopp.library;
 
 import pl.marta.kopp.communication.Response;
-import pl.marta.kopp.domain.book.Book;
+import pl.marta.kopp.domain.model.Book;
 import pl.marta.kopp.persistence.BookStorage;
 import pl.marta.kopp.persistence.BorrowStorage;
 

@@ -1,5 +1,8 @@
-package pl.marta.kopp.domain.author;
+package pl.marta.kopp.domain.service;
 
+import pl.marta.kopp.domain.service.exception.AuthorAlreadyExistsException;
+import pl.marta.kopp.domain.service.exception.AuthorDoesNotExistException;
+import pl.marta.kopp.domain.model.Author;
 import pl.marta.kopp.persistence.AuthorStorageJpa;
 
 public class AuthorService {

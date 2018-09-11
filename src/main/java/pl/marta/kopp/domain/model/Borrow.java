@@ -1,4 +1,4 @@
-package pl.marta.kopp.domain.borrow;
+package pl.marta.kopp.domain.model;
 import lombok.Getter;
 
 import javax.persistence.Entity;

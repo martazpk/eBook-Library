@@ -1,7 +1,6 @@
-package pl.marta.kopp.domain.book;
+package pl.marta.kopp.domain.model;
 
 import lombok.Getter;
-import pl.marta.kopp.domain.author.Author;
 
 import javax.persistence.*;
 import java.util.List;
