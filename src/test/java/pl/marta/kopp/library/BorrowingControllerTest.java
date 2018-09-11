@@ -12,6 +12,7 @@ public class BorrowingControllerTest {
     private final BorrowStorage borrowStorage=new BorrowStorageJpa();
     private final BorrowingController controller=new BorrowingController(bookStorage,borrowStorage);
     private static final String SOME_TITLE="Harry Potter";
+    private static final String SOME_ISBN="9876543456";
     private static final long SOME_USER_ID=123456L;
     private static final long SOME_BOOK_ID=123456L;
 
@@ -25,7 +26,7 @@ public class BorrowingControllerTest {
 
     @Test
     public void shouldNotBorrowBookWhenBookIsAlreadyBorrowed() throws Exception {
-        Book book=new Book(SOME_TITLE,null);
+        Book book=new Book(SOME_ISBN,SOME_TITLE,null);
         bookStorage.add(book);
         controller.borrowBook(book.getId(),SOME_USER_ID);
         Response result=controller.borrowBook(book.getId(),SOME_USER_ID);
@@ -35,7 +36,7 @@ public class BorrowingControllerTest {
 
     @Test
     public void shouldBorrowBook() throws Exception {
-        Book book=new Book(SOME_TITLE,null);
+        Book book=new Book(SOME_ISBN,SOME_TITLE,null);
         bookStorage.add(book);
         Response result=controller.borrowBook(book.getId(),SOME_USER_ID);
         assertTrue(result.getSuccess());

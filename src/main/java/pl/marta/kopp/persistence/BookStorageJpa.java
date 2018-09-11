@@ -11,8 +11,8 @@ import java.util.List;
 
 public class BookStorageJpa implements BookStorage {
 
-    EntityManagerFactory factory = Persistence.createEntityManagerFactory("eBookPersistence");
-    EntityManager entityManager = factory.createEntityManager();
+    private EntityManagerFactory factory = Persistence.createEntityManagerFactory("eBookPersistence");
+    private EntityManager entityManager = factory.createEntityManager();
 
 
     public void add(Book book) {
@@ -40,6 +40,13 @@ public class BookStorageJpa implements BookStorage {
     public Boolean isExists(long id) {
         Query query = entityManager.createQuery("FROM Book b WHERE b.id=:id ");
         query.setParameter("id", id);
+        return !(query.getResultList().isEmpty());
+    }
+
+    @Override
+    public Boolean isExists(String isbn) {
+        Query query = entityManager.createQuery("FROM Book b WHERE b.isbn=:isbn ");
+        query.setParameter("isbn", isbn);
         return !(query.getResultList().isEmpty());
     }
 

@@ -16,13 +16,14 @@ public class ReturnControllerTest {
     private final BorrowingController borrowingController = new BorrowingController(bookStorage, borrowStorage);
     private final ReturnController controller = new ReturnController(bookStorage, borrowStorage);
     private static final String SOME_TITLE = "Harry Potter";
+    private static final String SOME_BOOK_ISBN = "12345678";
     private static final long SOME_USER_ID = 123456L;
     private static final long INCORRECT_BOOK_ID = 123456L;
 
 
     @Test
     public void shouldNotReturnBookWhenUserDoesNotHaveAnyBorrowedBook() throws Exception {
-        Book book = new Book(SOME_TITLE, null);
+        Book book = new Book(SOME_BOOK_ISBN,SOME_TITLE, null);
         bookStorage.add(book);
         borrowingController.borrowBook(book.getId(), SOME_USER_ID);
         Response result = controller.returnBook(INCORRECT_BOOK_ID, SOME_USER_ID);
@@ -39,7 +40,7 @@ public class ReturnControllerTest {
 
     @Test
     public void shouldReturnBook() throws Exception {
-        Book book = new Book(SOME_TITLE, null);
+        Book book = new Book(SOME_BOOK_ISBN,SOME_TITLE, null);
         bookStorage.add(book);
         borrowingController.borrowBook(book.getId(), SOME_USER_ID);
         Response result = controller.returnBook(book.getId(), SOME_USER_ID);

@@ -24,59 +24,5 @@ public class BookStorageJpaTest {
         authorStorage=new AuthorStorageJpa();
     }
 
-    @Test
-    public void shouldAddNewBook() throws Exception {
-        List<Author> authors = new ArrayList<>();
-        authors.add(new Author(SOME_AUTHORS_NAME, SOME_AUTHORS_SURNAME));
-        Book book = new Book(SOME_TITLE, authors);
-        bookStorageJpa.add(book);
-        assertTrue(bookStorageJpa.isExists(book.getId()));
-    }
 
-    @Test
-    public void getAll() throws Exception {
-        bookStorageJpa.add(new Book(SOME_TITLE,null));
-        bookStorageJpa.add(new Book(ANOTHER_TITLE,null));
-        assertEquals(2,bookStorageJpa.getAll().size());
-    }
-
-    @Test
-    public void shouldGetBookById() throws Exception {
-        List<Author> authors = new ArrayList<>();
-        authors.add(new Author(SOME_AUTHORS_NAME, SOME_AUTHORS_SURNAME));
-        Book book = new Book(SOME_TITLE, authors);
-        bookStorageJpa.add(book);
-        Book byId = bookStorageJpa.getById(book.getId());
-        assertEquals(SOME_TITLE,byId.getTitle());
-    }
-
-
-    @Test
-    public void shouldDeleteBook() throws Exception {
-        Book book = new Book(SOME_TITLE, null);
-        bookStorageJpa.add(book);
-        bookStorageJpa.delete(book.getId());
-        assertFalse(bookStorageJpa.isExists(book.getId()));
-    }
-
-    @Test
-    public void shouldUpdateBook() throws Exception {
-        Book book = new Book(SOME_TITLE, null);
-        bookStorageJpa.add(book);
-        Book updatedBook=bookStorageJpa.getById(book.getId());
-        updatedBook.setBorrow(false);
-        bookStorageJpa.update(updatedBook);
-        assertEquals(false,bookStorageJpa.getById(book.getId()).isBorrow());
-    }
-
-    @Test
-    public void shouldAddAuthorWhenAddBookWithNewAuthor() throws Exception {
-        authorStorage=new AuthorStorageJpa();
-        List<Author> authors = new ArrayList<>();
-        Author author=new Author(SOME_AUTHORS_NAME, SOME_AUTHORS_SURNAME);
-        authors.add(author);
-        Book book = new Book(SOME_TITLE, authors);
-        bookStorageJpa.add(book);
-        assertTrue(authorStorage.isExists(author));
-    }
 }

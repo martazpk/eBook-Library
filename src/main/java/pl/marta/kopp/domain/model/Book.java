@@ -1,19 +1,19 @@
 package pl.marta.kopp.domain.model;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table
 @Getter
+@Setter
+@Entity
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column
     private Long id;
-    @Column
+    private String isbn;
     private String title;
     private boolean borrow;
     @JoinColumn
@@ -21,7 +21,8 @@ public class Book {
     private List<Author> authors;
 
 
-    public Book(String title, List<Author> authors) {
+    public Book(String isbn,String title, List<Author> authors) {
+        this.isbn=isbn;
         this.title = title;
         this.authors = authors;
         this.borrow = false;
@@ -30,13 +31,6 @@ public class Book {
     private Book() {
     }
 
-    public void setBorrow(boolean borrow) {
-        this.borrow = borrow;
-    }
-
-    public void setAuthors(List<Author> authors) {
-        this.authors = authors;
-    }
 
     @Override
     public String toString() {

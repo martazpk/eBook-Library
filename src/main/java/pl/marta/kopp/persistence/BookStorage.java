@@ -10,6 +10,7 @@ public interface BookStorage {
     List getPresentBooks();
     Book getById(long id);
     Boolean isExists(long id);
+    Boolean isExists(String isbn);
     void delete(long id);
     void update(Book book);
     void setBorrow(long id,boolean condition);
