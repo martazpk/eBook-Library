@@ -18,6 +18,6 @@ public class LoginController {
     public User getUser(String login,String password){
         if(userStorage.isUserExists(login,password))
         return userStorage.getByLoginAndPassword(login,password);
-        else throw new UserDoesNotExistsException();
+        else throw new UserDoesNotExistException();
     }
 }

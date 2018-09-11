@@ -22,7 +22,6 @@ public class RegistrationView {
         if(response.getSuccess()){
             systemInterface.display("Użytkownik "+login+" został pomyślnie zarejestrowany");
 
-
         }else {
             systemInterface.display("Rejestracja się nie powiodła "+response.getMessage());
             show();

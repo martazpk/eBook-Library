@@ -22,7 +22,6 @@ public class Book {
     private List<Author> authors;
 
 
-
     public Book(String title, List<Author> authors) {
         this.title = title;
         this.authors = authors;
@@ -49,5 +48,4 @@ public class Book {
                 ", authors=" + authors +
                 '}';
     }
-
 }

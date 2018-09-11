@@ -32,13 +32,13 @@ public class ReturnController {
         if (borrowStorage.isExistsBookId(bookId)) {
             Borrow borrow = borrowStorage.getByBookId(bookId);
             borrowStorage.delete(borrow.getId());
-        } else throw new BorrowDoesNotExistsException();
+        } else throw new BorrowDoesNotExistException();
     }
 
     private List<Borrow> getBorrowByUserId(long userId) {
         if (borrowStorage.isExistsUserId(userId)) {
             return borrowStorage.getByUserId(userId);
-        } else throw new BorrowDoesNotExistsException();
+        } else throw new BorrowDoesNotExistException();
     }
 
     public List<Book> getBorrowedBooksByUserId(long userId) {
@@ -54,7 +54,7 @@ public class ReturnController {
     public Book getBookById(int id) {
         if(bookStorage.isExists(id))
             return bookStorage.getById(id);
-        else throw new BookDoesNotExistsException(id);
+        else throw new BookDoesNotExistException(id);
     }
 }
 

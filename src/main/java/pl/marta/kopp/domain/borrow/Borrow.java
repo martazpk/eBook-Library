@@ -24,6 +24,7 @@ public class Borrow {
 
     private Borrow() {
     }
+
     public static class Builder {
         private long bookId;
         private long userId;

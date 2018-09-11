@@ -2,7 +2,6 @@ package pl.marta.kopp.view;
 
 import pl.marta.kopp.library.BorrowingController;
 import pl.marta.kopp.library.ReturnController;
-import pl.marta.kopp.persistence.*;
 import pl.marta.kopp.login.LoginController;
 import pl.marta.kopp.login.LoginView;
 import pl.marta.kopp.registration.RegistrationController;
@@ -41,7 +40,6 @@ public class EbookView {
             aFailureChoice();
 
         }
-
     }
 
     private void aFailureChoice() {

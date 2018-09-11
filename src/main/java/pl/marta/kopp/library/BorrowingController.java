@@ -2,7 +2,6 @@ package pl.marta.kopp.library;
 
 import pl.marta.kopp.communication.Response;
 import pl.marta.kopp.domain.book.Book;
-import pl.marta.kopp.domain.borrow.Borrow;
 import pl.marta.kopp.persistence.BookStorage;
 import pl.marta.kopp.persistence.BorrowStorage;
 
@@ -36,6 +35,6 @@ public class BorrowingController {
     public Book getById(int id) {
         if(bookStorage.isExists(id))
         return bookStorage.getById(id);
-        else throw new BookDoesNotExistsException(id);
+        else throw new BookDoesNotExistException(id);
     }
 }
