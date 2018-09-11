@@ -10,18 +10,15 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 public class AuthorStorageJpa implements AuthorStorage {
-    EntityManagerFactory factory = Persistence.createEntityManagerFactory("eBookPersistence");
-    EntityManager entityManager = factory.createEntityManager();
+    private EntityManagerFactory factory = Persistence.createEntityManagerFactory("eBookPersistence");
+    private EntityManager entityManager = factory.createEntityManager();
 
 
     @Override
     public void add(Author author) {
-
-        if (!isExists(author)) {
             entityManager.getTransaction().begin();
             entityManager.persist(author);
             entityManager.getTransaction().commit();
-        } else  throw new AuthorAlreadyExistsException(author);
     }
 
     @Override
@@ -42,6 +39,12 @@ public class AuthorStorageJpa implements AuthorStorage {
         Query query = entityManager.createQuery("FROM Author a WHERE a.name=:name AND a.surname=:surname ");
         query.setParameter("name", author.getName());
         query.setParameter("surname", author.getSurname());
+        return !(query.getResultList().isEmpty());
+    }
+    @Override
+    public boolean isExists(long id){
+        Query query = entityManager.createQuery("FROM Author a WHERE a.id=:id");
+        query.setParameter("id", id);
         return !(query.getResultList().isEmpty());
     }
 }

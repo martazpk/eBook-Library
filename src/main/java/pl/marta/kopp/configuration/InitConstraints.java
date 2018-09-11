@@ -1,16 +1,13 @@
-package pl.marta.kopp.CreateDataBase;
+package pl.marta.kopp.configuration;
 
 import pl.marta.kopp.domain.author.Author;
 import pl.marta.kopp.domain.book.Book;
-import pl.marta.kopp.persistence.AuthorStorage;
-import pl.marta.kopp.persistence.AuthorStorageJpa;
 import pl.marta.kopp.persistence.BookStorage;
-import pl.marta.kopp.persistence.BookStorageJpa;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreateBookStorage {
+public class InitConstraints {
 
     public static void create(BookStorage bookStorage) {
 

@@ -1,9 +1,7 @@
 package pl.marta.kopp;
 
 
-import pl.marta.kopp.CreateDataBase.CreateBookStorage;
-import pl.marta.kopp.domain.author.Author;
-import pl.marta.kopp.domain.book.Book;
+import pl.marta.kopp.configuration.InitConstraints;
 import pl.marta.kopp.library.BorrowingController;
 import pl.marta.kopp.library.ReturnController;
 import pl.marta.kopp.login.LoginController;
@@ -20,7 +18,7 @@ public class App {
         BookStorage bookStorage = new BookStorageJpa();
         BorrowStorage borrowStorage = new BorrowStorageJpa();
 
-        CreateBookStorage.create(bookStorage);
+        InitConstraints.create(bookStorage);
 
         new EbookView(new CliSystemInterface(new Scanner(System.in)), new LoginController(userStorage),
                 new BorrowingController(bookStorage, borrowStorage),
