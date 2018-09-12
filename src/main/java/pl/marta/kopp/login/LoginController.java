@@ -2,6 +2,7 @@ package pl.marta.kopp.login;
 
 import pl.marta.kopp.communication.Response;
 import pl.marta.kopp.domain.model.User;
+import pl.marta.kopp.domain.service.exception.UserDoesNotExistException;
 import pl.marta.kopp.persistence.UserStorage;
 
 public class LoginController {

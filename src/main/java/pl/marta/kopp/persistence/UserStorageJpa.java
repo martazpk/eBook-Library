@@ -53,4 +53,9 @@ public class UserStorageJpa implements UserStorage {
         query.setParameter("password", password);
         return query.getSingleResult();
     }
+    public boolean isExists(long id){
+        Query query = entityManager.createQuery("FROM User u WHERE u.id=:id ");
+        query.setParameter("id", id);
+        return !(query.getResultList().isEmpty());
+    }
 }

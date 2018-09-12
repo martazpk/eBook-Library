@@ -12,14 +12,13 @@ public class UsersView {
     private final BorrowedBooksByUserView borrowedBooksByUserView;
 
 
-    public UsersView(SystemInterface systemInterface, BorrowingController borrowingController,
-                     ReturnController returnController) {
+    public UsersView(SystemInterface systemInterface, BorrowingController borrowingController) {
         this.systemInterface = systemInterface;
         this.usersMenu = new UsersMenu(systemInterface);
         this.borrowingView = new BorrowingView(systemInterface, borrowingController);
-        this.returnView = new ReturnView(systemInterface, returnController);
+        this.returnView = new ReturnView(systemInterface, borrowingController);
         this.presentBooksView=new PresentBooksView(systemInterface,borrowingController);
-        this.borrowedBooksByUserView=new BorrowedBooksByUserView(systemInterface,returnController);
+        this.borrowedBooksByUserView=new BorrowedBooksByUserView(systemInterface,borrowingController);
     }
 
     public void show(User user) {

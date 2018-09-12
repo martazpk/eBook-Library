@@ -1,15 +1,16 @@
 package pl.marta.kopp.persistence;
 
-import pl.marta.kopp.domain.model.Borrow;
+import pl.marta.kopp.domain.model.Borrowing;
 
 import java.util.List;
 
 public interface BorrowStorage {
-    void add(long bookId,long userId);
+    void add(Borrowing borrowing);
     void delete(long id);
+    boolean isExists(long id);
     boolean isExistsUserId(long id);
     boolean isExistsBookId(long id);
-    Borrow getByBookId(long id);
-    List<Borrow> getByUserId(long userId);
+    Borrowing getByBookId(long id);
+    List<Borrowing> getByUserId(long userId);
 
 }

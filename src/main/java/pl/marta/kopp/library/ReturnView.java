@@ -6,9 +6,9 @@ import pl.marta.kopp.view.SystemInterface;
 
 public class ReturnView {
     private final SystemInterface systemInterface;
-    private final ReturnController controller;
+    private final BorrowingController controller;
 
-    public ReturnView(SystemInterface systemInterface, ReturnController controller) {
+    public ReturnView(SystemInterface systemInterface, BorrowingController controller) {
         this.systemInterface = systemInterface;
         this.controller = controller;
     }
@@ -19,10 +19,10 @@ public class ReturnView {
             systemInterface.display("");
             systemInterface.display("Podaj Id książki, którą chcesz zwrócić: ");
             int id = Integer.parseInt(systemInterface.read());
-            Response response = controller.returnBook(id, user.getId());
+            Response response = controller.returnBook(id);
             if (response.getSuccess()) {
                 systemInterface.display("");
-                systemInterface.display("Udało się zwrócić książkę  " + controller.getBookById(id));
+                systemInterface.display("Udało się zwrócić książkę  " + controller.getByBookId(id));
 
             } else {
                 systemInterface.display("Błąd: " + response.getMessage());

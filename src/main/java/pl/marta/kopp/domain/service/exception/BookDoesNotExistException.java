@@ -1,4 +1,4 @@
-package pl.marta.kopp.library;
+package pl.marta.kopp.domain.service.exception;
 
 public class BookDoesNotExistException extends RuntimeException {
     public BookDoesNotExistException(long id) {

@@ -21,7 +21,7 @@ public class BorrowingView {
             Response response = borrowingController.borrowBook(id, user.getId());
             if (response.getSuccess()) {
                 systemInterface.display("");
-                systemInterface.display("Udało się wypożyczyć książkę  " + borrowingController.getById(id));
+                systemInterface.display("Udało się wypożyczyć książkę  " + borrowingController.getByBookId(id));
 
             } else {
                 systemInterface.display("Błąd: " + response.getMessage());

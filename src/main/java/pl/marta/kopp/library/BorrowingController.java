@@ -2,39 +2,55 @@ package pl.marta.kopp.library;
 
 import pl.marta.kopp.communication.Response;
 import pl.marta.kopp.domain.model.Book;
-import pl.marta.kopp.persistence.BookStorage;
-import pl.marta.kopp.persistence.BorrowStorage;
+import pl.marta.kopp.domain.model.Borrowing;
+import pl.marta.kopp.domain.service.BookService;
+import pl.marta.kopp.domain.service.BorrowingService;
+import pl.marta.kopp.domain.service.exception.BookDoesNotExistException;
+import pl.marta.kopp.domain.service.exception.UserDoesNotExistException;
 
 import java.util.List;
 
 public class BorrowingController {
-    private final BookStorage bookStorage;
-    private final BorrowStorage borrowStorage;
+    private final BookService bookService;
+    private final BorrowingService borrowingService;
 
-    public BorrowingController(BookStorage bookStorage, BorrowStorage borrowStorage) {
-        this.bookStorage = bookStorage;
-        this.borrowStorage = borrowStorage;
+    public BorrowingController(BookService bookService, BorrowingService borrowingService) {
+        this.bookService = bookService;
+        this.borrowingService = borrowingService;
     }
 
+
     public Response borrowBook(long bookId, long userId) {
-        if (bookStorage.isExists(bookId)) {
-            Book book = bookStorage.getById(bookId);
+
+        if (bookService.isExists(bookId)) {
+            Book book = bookService.getById(bookId);
             if (book.isBorrow()) return Response.aFailureResponse("Sorry, this book is already borrowed");
-            else bookStorage.setBorrow(bookId,true);
-            borrowStorage.add(bookId,userId);
+            else bookService.setBorrow(bookId,true);
+            borrowingService.add(bookId,userId);
             return Response.aSuccessfulResponse();
         }
         return Response.aFailureResponse("Sorry, this book is not our catalog.");
     }
 
-
-    public List<Book> getPresentBooks() {
-        return bookStorage.getPresentBooks();
+    public Response returnBook(long bookId) {
+        try {
+            Borrowing borrowing = borrowingService.getByBookId(bookId);
+            borrowingService.delete(borrowing.getId());
+            bookService.setBorrow(bookId, false);
+            return Response.aSuccessfulResponse();
+        } catch (BookDoesNotExistException exc) {
+            return Response.aFailureResponse("Invalid Book Id");
+        }
     }
 
-    public Book getById(int id) {
-        if(bookStorage.isExists(id))
-        return bookStorage.getById(id);
-        else throw new BookDoesNotExistException(id);
+    public List<Book> getPresentBooks() {
+        return bookService.getPresentBooks();
+    }
+
+    public Book getByBookId(int bookId) {
+      return bookService.getById(bookId);
+    }
+    List<Book>getBorrowedBookdByUserId(long userId){
+        return borrowingService.getBorrowedBooksByUserId(userId);
     }
 }

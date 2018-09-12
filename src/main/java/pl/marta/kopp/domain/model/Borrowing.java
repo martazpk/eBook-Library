@@ -8,7 +8,7 @@ import java.util.Calendar;
 
 @Entity
 @Getter
-public class Borrow {
+public class Borrowing {
     @Id
     @GeneratedValue
     private long id;
@@ -16,13 +16,13 @@ public class Borrow {
     private long userId;
     private Calendar borrowDate;
 
-    private Borrow(Builder builder) {
+    private Borrowing(Builder builder) {
         this.bookId = builder.bookId;
         this.userId = builder.userId;
         this.borrowDate = Calendar.getInstance();
     }
 
-    private Borrow() {
+    private Borrowing() {
     }
 
     public static class Builder {
@@ -41,8 +41,8 @@ public class Borrow {
             return this;
         }
 
-        public Borrow build() {
-            return new Borrow(this);
+        public Borrowing build() {
+            return new Borrowing(this);
         }
     }
 }
