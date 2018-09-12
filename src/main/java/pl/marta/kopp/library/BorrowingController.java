@@ -6,7 +6,6 @@ import pl.marta.kopp.domain.model.Borrowing;
 import pl.marta.kopp.domain.service.BookService;
 import pl.marta.kopp.domain.service.BorrowingService;
 import pl.marta.kopp.domain.service.exception.BookDoesNotExistException;
-import pl.marta.kopp.domain.service.exception.UserDoesNotExistException;
 
 import java.util.List;
 

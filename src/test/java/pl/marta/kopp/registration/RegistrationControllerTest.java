@@ -2,6 +2,7 @@ package pl.marta.kopp.registration;
 
 import pl.marta.kopp.communication.Response;
 import pl.marta.kopp.domain.model.User;
+import pl.marta.kopp.domain.service.UserService;
 import pl.marta.kopp.persistence.UserStorageJpa;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,11 +17,12 @@ public class RegistrationControllerTest {
     private static final String INVALID_PASSWORD = "123";
     private static final String EXISTS_LOGIN = "JohnyDepp";
     private final UserStorageJpa userStorageJpa = new UserStorageJpa();
-    private final RegistrationController registrationController = new RegistrationController(userStorageJpa);
+    private final UserService service=new UserService(userStorageJpa);
+    private final RegistrationController registrationController = new RegistrationController(service);
 
     @Before
     public void setUp() {
-        userStorageJpa.addUser(new User(EXISTS_LOGIN, SOME_PASSWORD));
+        service.add(new User(EXISTS_LOGIN, SOME_PASSWORD));
     }
 
     @Test

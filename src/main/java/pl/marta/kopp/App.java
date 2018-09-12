@@ -29,7 +29,7 @@ public class App {
 
         new EbookView(new CliSystemInterface(new Scanner(System.in)), new LoginController(userStorage),
                 new BorrowingController(bookService, borrowingService),
-                new RegistrationController(userStorage)).show();
+                new RegistrationController(userService)).show();
 
     }
 }
