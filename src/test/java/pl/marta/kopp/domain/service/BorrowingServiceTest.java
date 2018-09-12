@@ -21,8 +21,8 @@ public class BorrowingServiceTest {
     private UserStorage userStorage;
     private BookStorageJpa bookStorage;
     private BookService bookService;
-    private static final String USER_NAME="Peter";
-    private static final String USER_SURNAME="Parker";
+    private static final String SOME_LOGIN="Peter";
+    private static final String SOME_PASSWORD="Parker";
     private static final String TITLE="Java";
     private static final String ISBN="23456789";
     private static final List<Author> AUTHORS=null;
@@ -43,7 +43,7 @@ public class BorrowingServiceTest {
 
     @Test
     public void shouldAddNewBorrowing() throws Exception {
-        long userId=givenUser(USER_NAME,USER_SURNAME);
+        long userId=givenUser(SOME_LOGIN,SOME_PASSWORD);
         long bookId=givenBook(ISBN,TITLE,AUTHORS);
         long add = borrowingService.add(bookId, userId);
         assertTrue(borrowingStorage.isExists(add));
@@ -64,7 +64,7 @@ public class BorrowingServiceTest {
 
     @Test(expected = BookDoesNotExistException.class)
     public void shouldThrowExceptionWhenBorrowBookWithIncorrectId() throws Exception {
-        long userId=givenUser(USER_NAME,USER_SURNAME);
+        long userId=givenUser(SOME_LOGIN,SOME_PASSWORD);
         borrowingService.add(INCORRECT_BOOK_ID,userId);
     }
 
@@ -76,7 +76,7 @@ public class BorrowingServiceTest {
 
     @Test
     public void shouldDeleteBorrowing() throws Exception {
-        long userId=givenUser(USER_NAME,USER_SURNAME);
+        long userId=givenUser(SOME_LOGIN,SOME_PASSWORD);
         long bookId=givenBook(ISBN,TITLE,AUTHORS);
         long borrowingId = borrowingService.add(bookId, userId);
 
@@ -86,7 +86,7 @@ public class BorrowingServiceTest {
 
     @Test
     public void shouldReturnBorrowingBookWhenUserIdIsGiven() throws Exception {
-        long userId=givenUser(USER_NAME,USER_SURNAME);
+        long userId=givenUser(SOME_LOGIN,SOME_PASSWORD);
         long bookId=givenBook(ISBN,TITLE,AUTHORS);
         borrowingService.add(bookId, userId);
         List<Book> byUserId = borrowingService.getBorrowedBooksByUserId(userId);

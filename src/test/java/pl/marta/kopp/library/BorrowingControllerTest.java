@@ -23,9 +23,9 @@ public class BorrowingControllerTest {
     private static final String SOME_TITLE="Harry Potter";
     private static final String SOME_ISBN="9876543456";
     private static final List<Author> AUTHORS=null;
-    private static final String USER_NAME="marta";
-    private static final String ANOTHER_USER_NAME="agnieszka";
-    private static final String USER_SURNAME="kopp";
+    private static final String SOME_LOGIN="marta";
+    private static final String ANOTHER_LOGIN="agnieszka";
+    private static final String SOME_PASSWORD="kopp";
     private static final long SOME_USER_ID=123456L;
     private static final long SOME_BOOK_ID=123456L;
 
@@ -40,8 +40,8 @@ public class BorrowingControllerTest {
     @Test
     public void shouldNotBorrowBookWhenBookIsAlreadyBorrowed() throws Exception {
         long bookId=givenBook(SOME_ISBN,SOME_TITLE,AUTHORS);
-        long user1ID=givenUser(USER_NAME,USER_SURNAME);
-        long user2Id=givenUser(ANOTHER_USER_NAME,USER_SURNAME);
+        long user1ID=givenUser(SOME_LOGIN,SOME_PASSWORD);
+        long user2Id=givenUser(ANOTHER_LOGIN,SOME_PASSWORD);
         controller.borrowBook(bookId,user1ID);
 
         Response result=controller.borrowBook(bookId,user2Id);
@@ -52,7 +52,7 @@ public class BorrowingControllerTest {
     @Test
     public void shouldBorrowBook() throws Exception {
         long bookId=givenBook(SOME_ISBN,SOME_TITLE,AUTHORS);
-        long userId=givenUser(USER_NAME,USER_SURNAME);
+        long userId=givenUser(SOME_LOGIN,SOME_PASSWORD);
         Response result=controller.borrowBook(bookId,userId);
         assertTrue(result.getSuccess());
         assertTrue(borrowStorage.isExistsBookId(bookId));
@@ -79,11 +79,10 @@ public class BorrowingControllerTest {
     @Test
     public void shouldReturnBook() throws Exception {
         long bookId=givenBook(SOME_ISBN,SOME_TITLE,AUTHORS);
-        long user1ID=givenUser(USER_NAME,USER_SURNAME);;
+        long user1ID=givenUser(SOME_LOGIN,SOME_PASSWORD);;
         controller.borrowBook(bookId,user1ID);
         Response result = controller.returnBook(bookId);
         assertTrue(result.getSuccess());
         assertFalse(borrowStorage.isExistsBookId(bookId));
     }
-
 }
