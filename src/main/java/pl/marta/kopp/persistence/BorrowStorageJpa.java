@@ -23,7 +23,12 @@ public class BorrowStorageJpa  implements BorrowStorage{
         entityManager.remove(borrowing);
         entityManager.getTransaction().commit();
     }
-
+    @Override
+    public void update(Borrowing borrowing) {
+        entityManager.getTransaction().begin();
+        entityManager.merge(borrowing);
+        entityManager.getTransaction().commit();
+    }
     @Override
     public boolean isExistsUserId(long userId) {
         Query query = entityManager.createQuery("FROM Borrowing b WHERE b.userId=:userId");
@@ -45,11 +50,13 @@ public class BorrowStorageJpa  implements BorrowStorage{
         return query.getSingleResult();
     }
     @Override
-    public List<Borrowing> getByUserId(long userId) {
-        TypedQuery<Borrowing> query = entityManager.createQuery("FROM Borrowing b WHERE b.userId=:userId", Borrowing.class);
+    public List<Borrowing> getCurrentByUserId(long userId) {
+        TypedQuery<Borrowing> query = entityManager.createQuery("FROM Borrowing b WHERE b.userId=:userId AND b.dateOfReturn=null", Borrowing.class);
         query.setParameter("userId", userId);
         return query.getResultList();
     }
+
+
 
     @Override
     public boolean isExists(long id){

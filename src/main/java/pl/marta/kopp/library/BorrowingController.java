@@ -34,7 +34,7 @@ public class BorrowingController {
     public Response returnBook(long bookId) {
         try {
             Borrowing borrowing = borrowingService.getByBookId(bookId);
-            borrowingService.delete(borrowing.getId());
+            borrowingService.addDateOfReturn(borrowing);
             bookService.setBorrow(bookId, false);
             return Response.aSuccessfulResponse();
         } catch (BookDoesNotExistException exc) {

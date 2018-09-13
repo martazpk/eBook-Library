@@ -33,6 +33,7 @@ public class BorrowingControllerTest {
     @Test
     public void shouldNotBorrowBookWhenBookIsNotInStorage() throws Exception {
         Response result=controller.borrowBook(SOME_BOOK_ID,SOME_USER_ID);
+
         assertFalse(result.getSuccess());
         assertEquals("Sorry, this book is not our catalog.",result.getMessage());
     }
@@ -54,6 +55,7 @@ public class BorrowingControllerTest {
         long bookId=givenBook(SOME_ISBN,SOME_TITLE,AUTHORS);
         long userId=givenUser(SOME_LOGIN,SOME_PASSWORD);
         Response result=controller.borrowBook(bookId,userId);
+
         assertTrue(result.getSuccess());
         assertTrue(borrowStorage.isExistsBookId(bookId));
 
@@ -72,6 +74,7 @@ public class BorrowingControllerTest {
     @Test
     public void shouldNotReturnBookWhenIncorrectBookIdIsGiven() throws Exception {
         Response result = controller.returnBook(SOME_BOOK_ID);
+
         assertFalse(result.getSuccess());
         assertEquals("Invalid Book Id", result.getMessage());
     }
@@ -79,10 +82,11 @@ public class BorrowingControllerTest {
     @Test
     public void shouldReturnBook() throws Exception {
         long bookId=givenBook(SOME_ISBN,SOME_TITLE,AUTHORS);
-        long user1ID=givenUser(SOME_LOGIN,SOME_PASSWORD);;
-        controller.borrowBook(bookId,user1ID);
+        long user1ID=givenUser(SOME_LOGIN,SOME_PASSWORD);
+        controller.borrowBook(bookId, user1ID);
         Response result = controller.returnBook(bookId);
+
         assertTrue(result.getSuccess());
-        assertFalse(borrowStorage.isExistsBookId(bookId));
+        assertNotNull(borrowStorage.getByBookId(bookId).getDateOfReturn());
     }
 }

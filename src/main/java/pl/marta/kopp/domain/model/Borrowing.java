@@ -1,29 +1,33 @@
 package pl.marta.kopp.domain.model;
 import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Calendar;
 
 @Entity
 @Getter
+@Setter
 public class Borrowing {
     @Id
     @GeneratedValue
     private long id;
     private long bookId;
     private long userId;
-    private Calendar borrowDate;
+    @Temporal(TemporalType.DATE)
+    private Calendar dateOfBorrow;
+    @Temporal(TemporalType.DATE)
+    private Calendar dateOfReturn;
 
     private Borrowing(Builder builder) {
         this.bookId = builder.bookId;
         this.userId = builder.userId;
-        this.borrowDate = Calendar.getInstance();
+        this.dateOfBorrow = Calendar.getInstance();
     }
 
     private Borrowing() {
     }
+
 
     public static class Builder {
         private long bookId;

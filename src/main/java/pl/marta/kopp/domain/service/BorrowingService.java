@@ -10,6 +10,7 @@ import pl.marta.kopp.persistence.BorrowStorage;
 import pl.marta.kopp.persistence.UserStorage;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class BorrowingService {
@@ -31,6 +32,11 @@ public class BorrowingService {
         return borrowing.getId();
     }
 
+public void addDateOfReturn(Borrowing borrowing){
+        borrowing.setDateOfReturn(Calendar.getInstance());
+        storage.update(borrowing);
+}
+
 
     public void delete(long id) {
         if (storage.isExists(id)) {
@@ -46,10 +52,9 @@ public class BorrowingService {
     }
 
 
-
     private List<Borrowing> getBorrowingByUserId(long userId){
         if(storage.isExistsUserId(userId)){
-            return storage.getByUserId(userId);
+            return storage.getCurrentByUserId(userId);
         }else throw new UserDoesNotExistException(userId);
     }
 
