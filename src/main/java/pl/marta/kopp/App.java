@@ -6,6 +6,7 @@ import pl.marta.kopp.domain.service.BookService;
 import pl.marta.kopp.domain.service.BorrowingService;
 import pl.marta.kopp.domain.service.UserService;
 import pl.marta.kopp.library.BorrowingController;
+import pl.marta.kopp.library.ReturnController;
 import pl.marta.kopp.login.LoginController;
 import pl.marta.kopp.persistence.*;
 import pl.marta.kopp.registration.RegistrationController;
@@ -28,8 +29,8 @@ public class App {
         InitConstraints.create(bookStorage);
 
         new EbookView(new CliSystemInterface(new Scanner(System.in)), new LoginController(userStorage),
-                new BorrowingController(bookService, borrowingService),
-                new RegistrationController(userService)).show();
+                new RegistrationController(userService), new BorrowingController(bookService, borrowingService),
+               new ReturnController(bookService,borrowingService)).show();
 
     }
 }

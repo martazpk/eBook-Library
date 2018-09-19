@@ -50,12 +50,11 @@ public class BorrowStorageJpa  implements BorrowStorage{
         return query.getSingleResult();
     }
     @Override
-    public List<Borrowing> getCurrentByUserId(long userId) {
-        TypedQuery<Borrowing> query = entityManager.createQuery("FROM Borrowing b WHERE b.userId=:userId AND b.dateOfReturn=null", Borrowing.class);
+    public List<Borrowing> getListByUserId(long userId) {
+        TypedQuery<Borrowing> query = entityManager.createQuery("FROM Borrowing b WHERE b.userId=:userId ", Borrowing.class);
         query.setParameter("userId", userId);
         return query.getResultList();
     }
-
 
 
     @Override

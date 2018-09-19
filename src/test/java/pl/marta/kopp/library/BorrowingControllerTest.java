@@ -61,32 +61,14 @@ public class BorrowingControllerTest {
 
     }
 
-    public long givenUser(String name, String surname){
+    private long givenUser(String name, String surname){
         User user=new User(name,surname);
         userStorage.addUser(user);
         return user.getId();
     }
 
-    public long givenBook(String isbn,String title, List<Author>authors){
+    private long givenBook(String isbn,String title, List<Author>authors){
         Book book=new Book(isbn,title,authors);
        return bookService.add(book);
-    }
-    @Test
-    public void shouldNotReturnBookWhenIncorrectBookIdIsGiven() throws Exception {
-        Response result = controller.returnBook(SOME_BOOK_ID);
-
-        assertFalse(result.getSuccess());
-        assertEquals("Invalid Book Id", result.getMessage());
-    }
-
-    @Test
-    public void shouldReturnBook() throws Exception {
-        long bookId=givenBook(SOME_ISBN,SOME_TITLE,AUTHORS);
-        long user1ID=givenUser(SOME_LOGIN,SOME_PASSWORD);
-        controller.borrowBook(bookId, user1ID);
-        Response result = controller.returnBook(bookId);
-
-        assertTrue(result.getSuccess());
-        assertNotNull(borrowStorage.getByBookId(bookId).getDateOfReturn());
     }
 }

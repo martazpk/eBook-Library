@@ -31,16 +31,7 @@ public class BorrowingController {
         return Response.aFailureResponse("Sorry, this book is not our catalog.");
     }
 
-    public Response returnBook(long bookId) {
-        try {
-            Borrowing borrowing = borrowingService.getByBookId(bookId);
-            borrowingService.addDateOfReturn(borrowing);
-            bookService.setBorrow(bookId, false);
-            return Response.aSuccessfulResponse();
-        } catch (BookDoesNotExistException exc) {
-            return Response.aFailureResponse("Invalid Book Id");
-        }
-    }
+
 
     public List<Book> getPresentBooks() {
         return bookService.getPresentBooks();

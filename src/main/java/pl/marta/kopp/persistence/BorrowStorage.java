@@ -11,7 +11,6 @@ public interface BorrowStorage {
     boolean isExistsUserId(long id);
     boolean isExistsBookId(long id);
     Borrowing getByBookId(long id);
-    List<Borrowing> getCurrentByUserId(long userId);
-
+    List<Borrowing> getListByUserId(long userId);
     void update(Borrowing borrowing);
 }

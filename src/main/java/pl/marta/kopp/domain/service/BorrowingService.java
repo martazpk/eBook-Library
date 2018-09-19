@@ -32,12 +32,6 @@ public class BorrowingService {
         return borrowing.getId();
     }
 
-public void addDateOfReturn(Borrowing borrowing){
-        borrowing.setDateOfReturn(Calendar.getInstance());
-        storage.update(borrowing);
-}
-
-
     public void delete(long id) {
         if (storage.isExists(id)) {
             storage.delete(id);
@@ -52,22 +46,24 @@ public void addDateOfReturn(Borrowing borrowing){
     }
 
 
-    private List<Borrowing> getBorrowingByUserId(long userId){
-        if(storage.isExistsUserId(userId)){
-            return storage.getCurrentByUserId(userId);
-        }else throw new UserDoesNotExistException(userId);
+    private List<Borrowing> getBorrowingByUserId(long userId) {
+            return storage.getListByUserId(userId);
+
     }
 
-    public List<Book> getBorrowedBooksByUserId(long id){
-        List<Borrowing> borrowings=getBorrowingByUserId(id);
-        List<Book> books=new ArrayList<>();
-        for (Borrowing b:borrowings) {
-            long bookId=b.getBookId();
-            Book book=bookStorage.getById(bookId);
+    public List<Book> getBorrowedBooksByUserId(long id) {
+        List<Borrowing> borrowings = getBorrowingByUserId(id);
+        List<Book> books = new ArrayList<>();
+        for (Borrowing b : borrowings) {
+            long bookId = b.getBookId();
+            Book book = bookStorage.getById(bookId);
             books.add(book);
         }
         return books;
 
     }
 
+    public boolean isExists(long bookId) {
+        return storage.isExistsBookId(bookId);
+    }
 }

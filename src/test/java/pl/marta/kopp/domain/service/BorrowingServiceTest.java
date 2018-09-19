@@ -95,14 +95,4 @@ public class BorrowingServiceTest {
 
     }
 
-    @Test
-    public void shouldAddDateOfReturn() throws Exception {
-        long userId=givenUser(SOME_LOGIN,SOME_PASSWORD);
-        long bookId=givenBook(ISBN,TITLE,AUTHORS);
-        borrowingService.add(bookId, userId);
-        Borrowing borrowing = borrowingService.getByBookId(bookId);
-        borrowingService.addDateOfReturn(borrowing);
-
-        Assert.assertNotNull(borrowing.getDateOfReturn());
-    }
 }

@@ -16,8 +16,7 @@ public class Borrowing {
     private long userId;
     @Temporal(TemporalType.DATE)
     private Calendar dateOfBorrow;
-    @Temporal(TemporalType.DATE)
-    private Calendar dateOfReturn;
+
 
     private Borrowing(Builder builder) {
         this.bookId = builder.bookId;
