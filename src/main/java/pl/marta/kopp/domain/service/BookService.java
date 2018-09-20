@@ -5,7 +5,6 @@ import pl.marta.kopp.domain.service.exception.BookAlreadyExistException;
 import pl.marta.kopp.domain.service.exception.BookDoesNotExistException;
 import pl.marta.kopp.persistence.BookStorageJpa;
 
-import java.util.List;
 
 public class BookService {
     private final BookStorageJpa storage;
@@ -54,9 +53,4 @@ public class BookService {
     public boolean isExists(long id){
         return storage.isExists(id);
     }
-
-    public List<Book> getPresentBooks(){
-        return storage.getPresentBooks();
-    }
-
 }

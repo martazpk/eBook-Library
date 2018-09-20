@@ -54,5 +54,4 @@ public class AuthorServiceTest {
         assertFalse(service.isExists(id));
     }
 
-
 }

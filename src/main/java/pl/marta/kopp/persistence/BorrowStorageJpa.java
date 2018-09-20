@@ -6,14 +6,16 @@ import javax.persistence.*;
 import java.util.List;
 
 public class BorrowStorageJpa  implements BorrowStorage{
-    private EntityManagerFactory factory = Persistence.createEntityManagerFactory("eBookPersistence");
-    private EntityManager entityManager = factory.createEntityManager();
+    private EntityManagerFactory factory= Persistence.createEntityManagerFactory("eBookPersistence");
+    private EntityManager entityManager= factory.createEntityManager();
 
     @Override
     public void add(Borrowing borrowing) {
+
         entityManager.getTransaction().begin();
         entityManager.persist(borrowing);
         entityManager.getTransaction().commit();
+
     }
 
     @Override

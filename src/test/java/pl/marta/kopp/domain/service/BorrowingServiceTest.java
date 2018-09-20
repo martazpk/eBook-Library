@@ -1,11 +1,10 @@
 package pl.marta.kopp.domain.service;
 
-import org.junit.Assert;
+
 import org.junit.Before;
 import org.junit.Test;
 import pl.marta.kopp.domain.model.Author;
 import pl.marta.kopp.domain.model.Book;
-import pl.marta.kopp.domain.model.Borrowing;
 import pl.marta.kopp.domain.model.User;
 import pl.marta.kopp.domain.service.exception.BookDoesNotExistException;
 import pl.marta.kopp.domain.service.exception.UserDoesNotExistException;

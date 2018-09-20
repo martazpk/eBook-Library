@@ -10,7 +10,6 @@ import pl.marta.kopp.view.UsersView;
 public class LoginView {
     private final SystemInterface systemInterface;
     private final LoginController controller;
-    private final UsersMenu usersMenu;
     private final UsersView usersView;
 
 
@@ -18,7 +17,7 @@ public class LoginView {
                      BorrowingController borrowingController, ReturnController returnController) {
         this.systemInterface = systemInterface;
         this.controller = controller;
-        usersMenu = new UsersMenu(systemInterface);
+        UsersMenu usersMenu = new UsersMenu(systemInterface);
         this.usersView=new UsersView(systemInterface,borrowingController,returnController);
 
     }

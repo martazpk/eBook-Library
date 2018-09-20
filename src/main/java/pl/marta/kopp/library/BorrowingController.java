@@ -19,7 +19,7 @@ public class BorrowingController {
     }
 
 
-    public Response borrowBook(long bookId, long userId) {
+     Response borrowBook(long bookId, long userId) {
 
         if (bookService.isExists(bookId)) {
             Book book = bookService.getById(bookId);
@@ -31,16 +31,4 @@ public class BorrowingController {
         return Response.aFailureResponse("Sorry, this book is not our catalog.");
     }
 
-
-
-    public List<Book> getPresentBooks() {
-        return bookService.getPresentBooks();
-    }
-
-    public Book getByBookId(int bookId) {
-      return bookService.getById(bookId);
-    }
-    List<Book>getBorrowedBookdByUserId(long userId){
-        return borrowingService.getBorrowedBooksByUserId(userId);
-    }
 }
