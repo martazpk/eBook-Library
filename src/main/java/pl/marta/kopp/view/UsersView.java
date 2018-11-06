@@ -1,24 +1,23 @@
 package pl.marta.kopp.view;
 
 import pl.marta.kopp.domain.model.User;
-import pl.marta.kopp.domain.service.BorrowingService;
 import pl.marta.kopp.library.*;
-import pl.marta.kopp.persistence.BookStorage;
 
 public class UsersView {
     private final SystemInterface systemInterface;
     private final UsersMenu usersMenu;
     private final BorrowingView borrowingView;
     private final ReturnView returnView;
-
+    private final AvailableBooksView availableBooksView;
 
 
     public UsersView(SystemInterface systemInterface, BorrowingController borrowingController,
-                     ReturnController returnController) {
+                     ReturnController returnController, AvailableBooksView availableBooksView) {
         this.systemInterface = systemInterface;
         this.usersMenu = new UsersMenu(systemInterface);
+        this.availableBooksView = availableBooksView;
         this.borrowingView = new BorrowingView(systemInterface, borrowingController);
-        this.returnView = new ReturnView(systemInterface,returnController);
+        this.returnView = new ReturnView(systemInterface, returnController);
 
     }
 
@@ -33,6 +32,11 @@ public class UsersView {
 
             } else if (option == 2) {
                 returnView.show(user);
+                show(user);
+
+
+            } else if (option == 3) {
+                availableBooksView.show();
                 show(user);
 
             } else if (option == 5) {

@@ -20,7 +20,7 @@ public class EbookView {
                      BorrowingController borrowingController, ReturnController returnController, BookStorage bookStorage,BorrowingService borrowingService) {
         this.systemInterface = systemInterface;
         mainMenu = new MainMenu(systemInterface);
-        loginView = new LoginView(systemInterface, loginController,borrowingController,returnController);
+        loginView = new LoginView(systemInterface, loginController,borrowingController,returnController,bookStorage);
         registrationView = new RegistrationView(systemInterface,registrationController);
     }
 

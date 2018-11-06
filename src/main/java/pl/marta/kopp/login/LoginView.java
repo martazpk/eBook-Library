@@ -3,6 +3,8 @@ package pl.marta.kopp.login;
 import pl.marta.kopp.communication.Response;
 import pl.marta.kopp.library.BorrowingController;
 import pl.marta.kopp.library.ReturnController;
+import pl.marta.kopp.persistence.BookStorage;
+import pl.marta.kopp.view.AvailableBooksView;
 import pl.marta.kopp.view.UsersMenu;
 import pl.marta.kopp.view.SystemInterface;
 import pl.marta.kopp.view.UsersView;
@@ -14,11 +16,12 @@ public class LoginView {
 
 
     public LoginView(SystemInterface systemInterface, LoginController controller,
-                     BorrowingController borrowingController, ReturnController returnController) {
+                     BorrowingController borrowingController, ReturnController returnController, BookStorage bookStorage) {
         this.systemInterface = systemInterface;
         this.controller = controller;
         UsersMenu usersMenu = new UsersMenu(systemInterface);
-        this.usersView=new UsersView(systemInterface,borrowingController,returnController);
+        AvailableBooksView availableBooksView=new AvailableBooksView(systemInterface,bookStorage);
+        this.usersView=new UsersView(systemInterface,borrowingController,returnController, availableBooksView);
 
     }
 

@@ -11,42 +11,43 @@ public class InitConstraints {
 
     public static void create(BookStorage bookStorage) {
 
-        Author author = new Author("Robert", "Martin");
-        List<Author> authors = new ArrayList<>();
-        authors.add(author);
-        Book book = new Book("12345","Clean Code", authors);
+        List<Author> authors = createListOfAuthors(new Author("Robert", "Martin"));
+        Book book = new Book("12345", "Clean Code", authors);
         bookStorage.add(book);
 
-        Author author1 = new Author("Kent", "Beck");
-        List<Author> authors1 = new ArrayList<>();
-        authors1.add(author1);
-        Book book1 = new Book("34567899987","Test Driven Development: By Example", authors1);
+        List<Author> authors1 =createListOfAuthors(new Author("Kent", "Beck"));
+        Book book1 = new Book("34567899987", "Test Driven Development: By Example", authors1);
         bookStorage.add(book1);
 
-        Author author2 = new Author("Eric", "Freeman");
-        Author author22 = new Author(" Elisabeth", "Freeman");
-        List<Author> authors2 = new ArrayList<>();
-        authors2.add(author2);
-        authors2.add(author22);
-        Book book2 = new Book("76543456","Head First Design Patterns", authors2);
+
+        List<Author> authors2 = createListOfAuthors(new Author("Eric", "Freeman"),
+                new Author(" Elisabeth", "Freeman"));
+        Book book2 = new Book("76543456", "Head First Design Patterns", authors2);
         bookStorage.add(book2);
 
-        Author author3 = new Author("Kathy", "Sierra");
-        List<Author> authors3 = new ArrayList<>();
-        authors3.add(author3);
-        Book book3 = new Book("456787654343","Head First Java", authors3);
+
+        List<Author> authors3 = createListOfAuthors(new Author("Kathy", "Sierra"));
+        Book book3 = new Book("456787654343", "Head First Java", authors3);
         bookStorage.add(book3);
 
-        Author author4 = new Author("Craig", "Walls");
-        List<Author> authors4 = new ArrayList<>();
-        authors4.add(author4);
-        Book book4 = new Book("8654345456678","Spring in Action", authors4);
+
+        List<Author> authors4 =createListOfAuthors(new Author("Craig", "Walls"));
+        Book book4 = new Book("8654345456678", "Spring in Action", authors4);
         bookStorage.add(book4);
 
-        Author author5 = new Author("Raoul Gabriel", "Urma");
-        List<Author> authors5 = new ArrayList<>();
-        authors5.add(author5);
-        Book book5 = new Book("776554434","Java 8 in Action", authors5);
+
+        List<Author> authors5 =createListOfAuthors(new Author("Raoul Gabriel", "Urma"));
+        Book book5 = new Book("776554434", "Java 8 in Action", authors5);
         bookStorage.add(book5);
 
-    }}
+    }
+
+    private static List<Author> createListOfAuthors(Author... authors) {
+        List<Author> result = new ArrayList<>();
+        for (Author a : authors) {
+            result.add(a);
+        }
+        return result;
+    }
+}
+
